@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package aplicaciondepartamentomantenimiento;
+package com.almacen.mx.view.aplicaciondepartamentomantenimiento;
 
 import aplicaciondepartamentomantenimiento.customUI.CustomHeader;
 import aplicaciondepartamentomantenimiento.customUI.ModeloTabla;
