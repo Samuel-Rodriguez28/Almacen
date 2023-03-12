@@ -2,7 +2,6 @@
 package com.almacen.mx.entity;
 
 /**
- *
  * @author jaher
  */
 public class Entrada {
