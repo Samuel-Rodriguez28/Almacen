@@ -2,7 +2,7 @@
 package com.almacen.mx.entity;
 
 /**
- * @author Samuel
+ * @author SmithHDZ
  */
 public class Stock {
     private int idStock;

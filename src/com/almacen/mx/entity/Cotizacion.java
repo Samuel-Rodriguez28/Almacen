@@ -2,8 +2,8 @@
 
 package com.almacen.mx.entity;
 
-/**
- * @author jaher
+/**¨
+ * @author SmithHDZ
  */
 public class Cotizacion {
 
