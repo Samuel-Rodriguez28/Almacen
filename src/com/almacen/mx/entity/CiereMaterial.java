@@ -1,6 +1,4 @@
-
 package com.almacen.mx.entity;
-
 /**
  * @author SmithHDZ
  */
