@@ -213,7 +213,7 @@ public class StockDAO {
             JOptionPane.showMessageDialog(null, "no se puede listar la tabla ");
         }
     }
-    
+    asdsdf
     public void listarSalidas(Connection con, JTable tabla)
     {
         DefaultTableModel model; 
