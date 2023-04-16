@@ -7,6 +7,7 @@ package com.almacen.mx.view.aplicaciondepartamentomantenimiento;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -32,95 +33,70 @@ public class BienvenidaMenu extends javax.swing.JPanel {
     private void initComponents() {
 
         panelMenuPrincipal = new javax.swing.JPanel();
-        logoITS = new javax.swing.JLabel();
+        texto = new javax.swing.JPanel();
         textoInstitucion = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        logo = new javax.swing.JPanel();
+        logoITS = new javax.swing.JLabel();
+
+        setBorder(null);
+        setLayout(new java.awt.BorderLayout());
 
         panelMenuPrincipal.setBackground(new java.awt.Color(44, 60, 67));
+        panelMenuPrincipal.setLayout(new java.awt.BorderLayout());
+
+        texto.setOpaque(false);
+        texto.setPreferredSize(new java.awt.Dimension(1280, 200));
+        texto.setLayout(new java.awt.BorderLayout(0, 10));
 
         textoInstitucion.setFont(new java.awt.Font("Corbel", 1, 48)); // NOI18N
         textoInstitucion.setForeground(new java.awt.Color(255, 255, 255));
         textoInstitucion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         textoInstitucion.setText("INSTITUTO TECNOLOGICO DE SALTILLO");
         textoInstitucion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jLabel1.setOpaque(true);
+        texto.add(textoInstitucion, java.awt.BorderLayout.PAGE_START);
 
         jLabel2.setFont(new java.awt.Font("Corbel", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("<html><center>Departamento de Mantenimiento <p>Y prevencion");
+        texto.add(jLabel2, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout panelMenuPrincipalLayout = new javax.swing.GroupLayout(panelMenuPrincipal);
-        panelMenuPrincipal.setLayout(panelMenuPrincipalLayout);
-        panelMenuPrincipalLayout.setHorizontalGroup(
-            panelMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMenuPrincipalLayout.createSequentialGroup()
-                .addContainerGap(143, Short.MAX_VALUE)
-                .addGroup(panelMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuPrincipalLayout.createSequentialGroup()
-                        .addGroup(panelMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(textoInstitucion, javax.swing.GroupLayout.DEFAULT_SIZE, 903, Short.MAX_VALUE))
-                        .addGap(64, 64, 64))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuPrincipalLayout.createSequentialGroup()
-                        .addGroup(panelMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel2)
-                            .addComponent(logoITS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(268, 268, 268))))
-        );
-        panelMenuPrincipalLayout.setVerticalGroup(
-            panelMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMenuPrincipalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(textoInstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(logoITS, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
-                .addContainerGap(116, Short.MAX_VALUE))
-        );
+        panelMenuPrincipal.add(texto, java.awt.BorderLayout.PAGE_START);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1110, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(panelMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 898, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(panelMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        logo.setOpaque(false);
+        logo.setPreferredSize(new java.awt.Dimension(1215, 500));
+        logo.setLayout(new java.awt.BorderLayout());
+
+        logoITS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo.add(logoITS, java.awt.BorderLayout.CENTER);
+
+        panelMenuPrincipal.add(logo, java.awt.BorderLayout.CENTER);
+
+        add(panelMenuPrincipal, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
     
     //<editor-fold defaultstate="collapsed" desc="Metodos usados para la interfaz">
-    private void manualInitComponents(){
-        ImageIcon imagen = new ImageIcon("src/com/almacen/mx/view/recursos/logotec.png");
-        Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(500, 500, Image.SCALE_SMOOTH));
-        logoITS.setIcon(icono);
+    private void manualInitComponents(){       
+        logoITS.setSize(500, 500);
+        ponerImagen(logoITS, "src/com/almacen/mx/view/recursos/logotec.png");
+    }
+    
+    private void ponerImagen(JLabel lb, String ruta) {
+        ImageIcon imagen = new ImageIcon(ruta);
+        Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(lb.getWidth(), lb.getHeight(), Image.SCALE_SMOOTH));
+        lb.setIcon(icono);
         this.repaint();
     }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Variables">
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel logo;
     private javax.swing.JLabel logoITS;
     private javax.swing.JPanel panelMenuPrincipal;
+    private javax.swing.JPanel texto;
     private javax.swing.JLabel textoInstitucion;
     // End of variables declaration//GEN-END:variables
     //</editor-fold>

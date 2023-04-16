@@ -48,33 +48,19 @@ public class StockMenu extends javax.swing.JPanel {
     private void initComponents() {
 
         panelStock = new javax.swing.JPanel();
-        modificarEntradasMenu = new javax.swing.JPanel();
-        eNumeroTextField = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        ePiezasTextField = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        eCodigoTextField = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        eNombreTextField = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        eEstadoTextField = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        eProveedorTextField = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        eFechaTextField = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        eFechaButton = new javax.swing.JButton();
-        eGuardarButton = new javax.swing.JButton();
-        eVolverButton = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        eNumeroErrorLabel = new javax.swing.JLabel();
-        ePiezasErrorLabel = new javax.swing.JLabel();
-        eCodigoErrorLabel = new javax.swing.JLabel();
-        eNombreErrorLabel = new javax.swing.JLabel();
-        eEstadoErrorLabel = new javax.swing.JLabel();
-        eProveedorErrorLabel = new javax.swing.JLabel();
-        eFechaErrorLabel = new javax.swing.JLabel();
+        botones = new javax.swing.JPanel();
+        centro = new javax.swing.JPanel();
+        entradas = new javax.swing.JPanel();
+        meLabel = new javax.swing.JLabel();
+        modificarEntradasButton = new javax.swing.JLabel();
+        salidas = new javax.swing.JPanel();
+        msLabel = new javax.swing.JLabel();
+        modificarSalidasButton = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        ventanas = new javax.swing.JPanel();
         modificarSalidasMenu = new javax.swing.JPanel();
+        campos = new javax.swing.JPanel();
         sNumeroTextField = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         sPiezasTextField = new javax.swing.JTextField();
@@ -103,12 +89,42 @@ public class StockMenu extends javax.swing.JPanel {
         sLugarErrorLabel = new javax.swing.JLabel();
         sEstadoErrorLabel = new javax.swing.JLabel();
         sFechaErrorLabel = new javax.swing.JLabel();
+        modificarEntradasMenu = new javax.swing.JPanel();
+        campos2 = new javax.swing.JPanel();
+        eNumeroTextField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        ePiezasTextField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        eCodigoTextField = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        eNombreTextField = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        eEstadoTextField = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        eProveedorTextField = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        eFechaTextField = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        eFechaButton = new javax.swing.JButton();
+        eGuardarButton = new javax.swing.JButton();
+        eVolverButton = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        eNumeroErrorLabel = new javax.swing.JLabel();
+        ePiezasErrorLabel = new javax.swing.JLabel();
+        eCodigoErrorLabel = new javax.swing.JLabel();
+        eNombreErrorLabel = new javax.swing.JLabel();
+        eEstadoErrorLabel = new javax.swing.JLabel();
+        eProveedorErrorLabel = new javax.swing.JLabel();
+        eFechaErrorLabel = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        tabla = new javax.swing.JPanel();
         scrollStock = new javax.swing.JScrollPane();
         tablaStock = new javax.swing.JTable();
-        modificarEntradasButton = new javax.swing.JLabel();
-        msLabel = new javax.swing.JLabel();
-        modificarSalidasButton = new javax.swing.JLabel();
-        meLabel = new javax.swing.JLabel();
+
+        setLayout(new java.awt.BorderLayout());
 
         panelStock.setBackground(new java.awt.Color(44, 60, 67));
         panelStock.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -116,168 +132,117 @@ public class StockMenu extends javax.swing.JPanel {
                 panelStockMouseClicked(evt);
             }
         });
-        panelStock.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelStock.setLayout(new java.awt.BorderLayout());
 
-        modificarEntradasMenu.setBackground(new java.awt.Color(204, 204, 204));
-        modificarEntradasMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        botones.setOpaque(false);
+        botones.setPreferredSize(new java.awt.Dimension(510, 130));
+        botones.setLayout(new java.awt.BorderLayout(300, 0));
 
-        eNumeroTextField.setBackground(new java.awt.Color(255, 255, 255));
-        modificarEntradasMenu.add(eNumeroTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 164, -1));
+        centro.setMaximumSize(new java.awt.Dimension(500, 130));
+        centro.setOpaque(false);
+        centro.setPreferredSize(new java.awt.Dimension(210, 130));
+        centro.setLayout(new java.awt.BorderLayout());
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("NUMERO:");
-        modificarEntradasMenu.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 76, 64, -1));
+        entradas.setOpaque(false);
+        entradas.setPreferredSize(new java.awt.Dimension(110, 100));
+        entradas.setLayout(new java.awt.BorderLayout());
 
-        ePiezasTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ePiezasTextFieldActionPerformed(evt);
+        meLabel.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
+        meLabel.setForeground(new java.awt.Color(255, 255, 255));
+        meLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        meLabel.setText("<HTML><center>MODIFICAR <p> ENTRADAS");
+        meLabel.setPreferredSize(new java.awt.Dimension(81, 30));
+        entradas.add(meLabel, java.awt.BorderLayout.PAGE_START);
+
+        modificarEntradasButton.setBackground(new java.awt.Color(0, 51, 51));
+        modificarEntradasButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        modificarEntradasButton.setPreferredSize(new java.awt.Dimension(50, 50));
+        modificarEntradasButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                modificarEntradasButtonMouseClicked(evt);
             }
-        });
-        modificarEntradasMenu.add(ePiezasTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 164, -1));
-
-        jLabel4.setText("PIEZAS:");
-        modificarEntradasMenu.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 136, -1, -1));
-        modificarEntradasMenu.add(eCodigoTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 206, 164, -1));
-
-        jLabel5.setText("CODIGO:");
-        modificarEntradasMenu.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 212, 55, -1));
-        modificarEntradasMenu.add(eNombreTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 267, 164, -1));
-
-        jLabel6.setText("NOMBRE:");
-        modificarEntradasMenu.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 273, -1, -1));
-
-        eEstadoTextField.setBackground(new java.awt.Color(255, 255, 255));
-        modificarEntradasMenu.add(eEstadoTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(601, 130, 164, -1));
-
-        jLabel7.setText("ESTADO:");
-        modificarEntradasMenu.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(544, 136, -1, -1));
-
-        eProveedorTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eProveedorTextFieldActionPerformed(evt);
-            }
-        });
-        modificarEntradasMenu.add(eProveedorTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(599, 206, 164, -1));
-
-        jLabel8.setText("PROVEEDOR:");
-        modificarEntradasMenu.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(514, 212, -1, -1));
-
-        eFechaTextField.setText("DIA/MES/AÑO");
-        eFechaTextField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                eFechaTextFieldMouseEntered(evt);
+                modificarEntradasButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                eFechaTextFieldMouseExited(evt);
+                modificarEntradasButtonMouseExited(evt);
             }
         });
-        modificarEntradasMenu.add(eFechaTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(599, 267, 164, -1));
+        entradas.add(modificarEntradasButton, java.awt.BorderLayout.CENTER);
 
-        jLabel9.setText("FECHA:");
-        modificarEntradasMenu.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 273, -1, -1));
+        centro.add(entradas, java.awt.BorderLayout.WEST);
 
-        eFechaButton.setText("HOY");
-        eFechaButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eFechaButtonActionPerformed(evt);
-            }
-        });
-        modificarEntradasMenu.add(eFechaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(769, 267, -1, -1));
+        salidas.setOpaque(false);
+        salidas.setPreferredSize(new java.awt.Dimension(110, 100));
+        salidas.setLayout(new java.awt.BorderLayout());
 
-        eGuardarButton.setBackground(new java.awt.Color(153, 255, 153));
-        eGuardarButton.setText("GUARDAR");
-        eGuardarButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        msLabel.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
+        msLabel.setForeground(new java.awt.Color(255, 255, 255));
+        msLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        msLabel.setText("<HTML><center>MODIFICAR <p> SALIDAS");
+        msLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        salidas.add(msLabel, java.awt.BorderLayout.PAGE_START);
+
+        modificarSalidasButton.setBackground(new java.awt.Color(0, 51, 51));
+        modificarSalidasButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        modificarSalidasButton.setPreferredSize(new java.awt.Dimension(50, 50));
+        modificarSalidasButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                eGuardarButtonMouseClicked(evt);
+                modificarSalidasButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                modificarSalidasButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                modificarSalidasButtonMouseExited(evt);
             }
         });
-        modificarEntradasMenu.add(eGuardarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(534, 400, -1, -1));
+        salidas.add(modificarSalidasButton, java.awt.BorderLayout.CENTER);
 
-        eVolverButton.setBackground(new java.awt.Color(255, 153, 153));
-        eVolverButton.setText("VOLVER");
-        eVolverButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eVolverButtonActionPerformed(evt);
-            }
-        });
-        modificarEntradasMenu.add(eVolverButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(301, 400, -1, -1));
+        centro.add(salidas, java.awt.BorderLayout.EAST);
 
-        jLabel10.setText("REGISTRAR NUEVA ENTRADA");
-        modificarEntradasMenu.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 22, -1, -1));
+        botones.add(centro, java.awt.BorderLayout.CENTER);
+        botones.add(jLabel1, java.awt.BorderLayout.WEST);
+        botones.add(jLabel2, java.awt.BorderLayout.EAST);
 
-        eNumeroErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
-        eNumeroErrorLabel.setText("ERROR");
-        modificarEntradasMenu.add(eNumeroErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 102, -1, -1));
+        panelStock.add(botones, java.awt.BorderLayout.PAGE_END);
 
-        ePiezasErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
-        ePiezasErrorLabel.setText("ERROR");
-        modificarEntradasMenu.add(ePiezasErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 164, -1, -1));
-
-        eCodigoErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
-        eCodigoErrorLabel.setText("ERROR");
-        modificarEntradasMenu.add(eCodigoErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 240, -1, -1));
-
-        eNombreErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
-        eNombreErrorLabel.setText("ERROR");
-        modificarEntradasMenu.add(eNombreErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 301, -1, -1));
-
-        eEstadoErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
-        eEstadoErrorLabel.setText("ERROR");
-        modificarEntradasMenu.add(eEstadoErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(607, 164, -1, -1));
-
-        eProveedorErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
-        eProveedorErrorLabel.setText("ERROR");
-        modificarEntradasMenu.add(eProveedorErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(605, 240, -1, -1));
-
-        eFechaErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
-        eFechaErrorLabel.setText("ERROR");
-        modificarEntradasMenu.add(eFechaErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(605, 301, -1, -1));
-
-        panelStock.add(modificarEntradasMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 880, 480));
+        ventanas.setOpaque(false);
+        ventanas.setLayout(new java.awt.BorderLayout(30, 30));
 
         modificarSalidasMenu.setBackground(new java.awt.Color(204, 204, 204));
-        modificarSalidasMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        modificarSalidasMenu.setLayout(new java.awt.BorderLayout());
+
+        campos.setOpaque(false);
 
         sNumeroTextField.setBackground(new java.awt.Color(255, 255, 255));
-        modificarSalidasMenu.add(sNumeroTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 164, -1));
 
         jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setText("NUMERO:");
-        modificarSalidasMenu.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 76, 64, -1));
 
         sPiezasTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sPiezasTextFieldActionPerformed(evt);
             }
         });
-        modificarSalidasMenu.add(sPiezasTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 164, -1));
 
         jLabel20.setText("PIEZAS:");
-        modificarSalidasMenu.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 136, -1, -1));
-        modificarSalidasMenu.add(sCodigoTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 206, 164, -1));
 
         jLabel21.setText("CODIGO:");
-        modificarSalidasMenu.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 212, 55, -1));
-        modificarSalidasMenu.add(sNombreTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 267, 164, -1));
 
         jLabel22.setText("NOMBRE:");
-        modificarSalidasMenu.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 273, -1, -1));
 
         sPersonalTextField.setBackground(new java.awt.Color(255, 255, 255));
-        modificarSalidasMenu.add(sPersonalTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(619, 68, 164, -1));
 
         jLabel23.setText("PERSONAL:");
-        modificarSalidasMenu.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(532, 74, -1, -1));
 
         sLugarTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sLugarTextFieldActionPerformed(evt);
             }
         });
-        modificarSalidasMenu.add(sLugarTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(619, 130, 164, -1));
 
         jLabel24.setText("LUGAR:");
-        modificarSalidasMenu.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(556, 136, -1, -1));
 
         sFechaTextField.setText("DIA/MES/AÑO");
         sFechaTextField.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -288,10 +253,8 @@ public class StockMenu extends javax.swing.JPanel {
                 sFechaTextFieldMouseExited(evt);
             }
         });
-        modificarSalidasMenu.add(sFechaTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(614, 267, 164, -1));
 
         jLabel25.setText("FECHA:");
-        modificarSalidasMenu.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(565, 273, -1, -1));
 
         sFechaButton.setText("HOY");
         sFechaButton.addActionListener(new java.awt.event.ActionListener() {
@@ -299,7 +262,6 @@ public class StockMenu extends javax.swing.JPanel {
                 sFechaButtonActionPerformed(evt);
             }
         });
-        modificarSalidasMenu.add(sFechaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(784, 267, -1, -1));
 
         sGuardarButton.setBackground(new java.awt.Color(153, 255, 153));
         sGuardarButton.setText("GUARDAR");
@@ -308,7 +270,6 @@ public class StockMenu extends javax.swing.JPanel {
                 sGuardarButtonActionPerformed(evt);
             }
         });
-        modificarSalidasMenu.add(sGuardarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 331, -1, -1));
 
         sVolverButton.setBackground(new java.awt.Color(255, 153, 153));
         sVolverButton.setText("VOLVER");
@@ -317,48 +278,419 @@ public class StockMenu extends javax.swing.JPanel {
                 sVolverButtonActionPerformed(evt);
             }
         });
-        modificarSalidasMenu.add(sVolverButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 331, -1, -1));
 
         jLabel26.setText("REGISTRAR NUEVA SALIDA");
-        modificarSalidasMenu.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 20, -1, -1));
 
         jLabel11.setText("ESTADO:");
-        modificarSalidasMenu.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 212, -1, -1));
-        modificarSalidasMenu.add(sEstadoTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(619, 206, 164, -1));
 
         sNumeroErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
         sNumeroErrorLabel.setText("ERROR");
-        modificarSalidasMenu.add(sNumeroErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 102, -1, -1));
 
         sPiezasErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
         sPiezasErrorLabel.setText("ERROR");
-        modificarSalidasMenu.add(sPiezasErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 164, -1, -1));
 
         sCodigoErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
         sCodigoErrorLabel.setText("ERROR");
-        modificarSalidasMenu.add(sCodigoErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 240, -1, -1));
 
         sNombreErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
         sNombreErrorLabel.setText("ERROR");
-        modificarSalidasMenu.add(sNombreErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 301, -1, -1));
 
         sPersonalErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
         sPersonalErrorLabel.setText("ERROR");
-        modificarSalidasMenu.add(sPersonalErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 102, -1, -1));
 
         sLugarErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
         sLugarErrorLabel.setText("ERROR");
-        modificarSalidasMenu.add(sLugarErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 164, -1, -1));
 
         sEstadoErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
         sEstadoErrorLabel.setText("ERROR");
-        modificarSalidasMenu.add(sEstadoErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 240, -1, -1));
 
         sFechaErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
         sFechaErrorLabel.setText("ERROR");
-        modificarSalidasMenu.add(sFechaErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 301, -1, -1));
 
-        panelStock.add(modificarSalidasMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 880, 480));
+        javax.swing.GroupLayout camposLayout = new javax.swing.GroupLayout(campos);
+        campos.setLayout(camposLayout);
+        camposLayout.setHorizontalGroup(
+            camposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 757, Short.MAX_VALUE)
+            .addGroup(camposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(camposLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(camposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(camposLayout.createSequentialGroup()
+                            .addGap(274, 274, 274)
+                            .addComponent(jLabel26))
+                        .addGroup(camposLayout.createSequentialGroup()
+                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(6, 6, 6)
+                            .addComponent(sNumeroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(218, 218, 218)
+                            .addComponent(jLabel23)
+                            .addGap(19, 19, 19)
+                            .addComponent(sPersonalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(camposLayout.createSequentialGroup()
+                            .addGap(76, 76, 76)
+                            .addComponent(sNumeroErrorLabel)
+                            .addGap(425, 425, 425)
+                            .addComponent(sPersonalErrorLabel))
+                        .addGroup(camposLayout.createSequentialGroup()
+                            .addGap(15, 15, 15)
+                            .addComponent(jLabel20)
+                            .addGap(11, 11, 11)
+                            .addComponent(sPiezasTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(242, 242, 242)
+                            .addComponent(jLabel24)
+                            .addGap(19, 19, 19)
+                            .addComponent(sLugarTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(camposLayout.createSequentialGroup()
+                            .addGap(76, 76, 76)
+                            .addComponent(sPiezasErrorLabel)
+                            .addGap(425, 425, 425)
+                            .addComponent(sLugarErrorLabel))
+                        .addGroup(camposLayout.createSequentialGroup()
+                            .addGap(4, 4, 4)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(11, 11, 11)
+                            .addComponent(sCodigoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(236, 236, 236)
+                            .addComponent(jLabel11)
+                            .addGap(18, 18, 18)
+                            .addComponent(sEstadoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(camposLayout.createSequentialGroup()
+                            .addGap(76, 76, 76)
+                            .addComponent(sCodigoErrorLabel)
+                            .addGap(425, 425, 425)
+                            .addComponent(sEstadoErrorLabel))
+                        .addGroup(camposLayout.createSequentialGroup()
+                            .addGap(4, 4, 4)
+                            .addComponent(jLabel22)
+                            .addGap(11, 11, 11)
+                            .addComponent(sNombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(251, 251, 251)
+                            .addComponent(jLabel25)
+                            .addGap(6, 6, 6)
+                            .addComponent(sFechaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(6, 6, 6)
+                            .addComponent(sFechaButton))
+                        .addGroup(camposLayout.createSequentialGroup()
+                            .addGap(76, 76, 76)
+                            .addComponent(sNombreErrorLabel)
+                            .addGap(420, 420, 420)
+                            .addComponent(sFechaErrorLabel))
+                        .addGroup(camposLayout.createSequentialGroup()
+                            .addGap(198, 198, 198)
+                            .addComponent(sVolverButton)
+                            .addGap(168, 168, 168)
+                            .addComponent(sGuardarButton)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        camposLayout.setVerticalGroup(
+            camposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 339, Short.MAX_VALUE)
+            .addGroup(camposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(camposLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel26)
+                    .addGap(32, 32, 32)
+                    .addGroup(camposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(camposLayout.createSequentialGroup()
+                            .addGap(8, 8, 8)
+                            .addComponent(jLabel19))
+                        .addGroup(camposLayout.createSequentialGroup()
+                            .addGap(2, 2, 2)
+                            .addComponent(sNumeroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(camposLayout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addComponent(jLabel23))
+                        .addComponent(sPersonalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(4, 4, 4)
+                    .addGroup(camposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(sNumeroErrorLabel)
+                        .addComponent(sPersonalErrorLabel))
+                    .addGap(12, 12, 12)
+                    .addGroup(camposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(sPiezasTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(sLugarTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(camposLayout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addGroup(camposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel20)
+                                .addComponent(jLabel24))))
+                    .addGap(6, 6, 6)
+                    .addGroup(camposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(sPiezasErrorLabel)
+                        .addComponent(sLugarErrorLabel))
+                    .addGap(26, 26, 26)
+                    .addGroup(camposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(sCodigoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(sEstadoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(camposLayout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addGroup(camposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel21)
+                                .addComponent(jLabel11))))
+                    .addGap(6, 6, 6)
+                    .addGroup(camposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(sCodigoErrorLabel)
+                        .addComponent(sEstadoErrorLabel))
+                    .addGap(11, 11, 11)
+                    .addGroup(camposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(sNombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(sFechaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(sFechaButton)
+                        .addGroup(camposLayout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addGroup(camposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel22)
+                                .addComponent(jLabel25))))
+                    .addGap(6, 6, 6)
+                    .addGroup(camposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(sNombreErrorLabel)
+                        .addComponent(sFechaErrorLabel))
+                    .addGap(14, 14, 14)
+                    .addGroup(camposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(sVolverButton)
+                        .addComponent(sGuardarButton))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        modificarSalidasMenu.add(campos, java.awt.BorderLayout.CENTER);
+
+        ventanas.add(modificarSalidasMenu, java.awt.BorderLayout.CENTER);
+
+        modificarEntradasMenu.setBackground(new java.awt.Color(204, 204, 204));
+        modificarEntradasMenu.setLayout(new java.awt.BorderLayout());
+
+        campos2.setOpaque(false);
+
+        eNumeroTextField.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("NUMERO:");
+
+        ePiezasTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ePiezasTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("PIEZAS:");
+
+        jLabel5.setText("CODIGO:");
+
+        jLabel6.setText("NOMBRE:");
+
+        eEstadoTextField.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel7.setText("ESTADO:");
+
+        eProveedorTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eProveedorTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("PROVEEDOR:");
+
+        eFechaTextField.setText("DIA/MES/AÑO");
+        eFechaTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                eFechaTextFieldMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                eFechaTextFieldMouseExited(evt);
+            }
+        });
+
+        jLabel9.setText("FECHA:");
+
+        eFechaButton.setText("HOY");
+        eFechaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eFechaButtonActionPerformed(evt);
+            }
+        });
+
+        eGuardarButton.setBackground(new java.awt.Color(153, 255, 153));
+        eGuardarButton.setText("GUARDAR");
+        eGuardarButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eGuardarButtonMouseClicked(evt);
+            }
+        });
+
+        eVolverButton.setBackground(new java.awt.Color(255, 153, 153));
+        eVolverButton.setText("VOLVER");
+        eVolverButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eVolverButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("REGISTRAR NUEVA ENTRADA");
+
+        eNumeroErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        eNumeroErrorLabel.setText("ERROR");
+
+        ePiezasErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        ePiezasErrorLabel.setText("ERROR");
+
+        eCodigoErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        eCodigoErrorLabel.setText("ERROR");
+
+        eNombreErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        eNombreErrorLabel.setText("ERROR");
+
+        eEstadoErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        eEstadoErrorLabel.setText("ERROR");
+
+        eProveedorErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        eProveedorErrorLabel.setText("ERROR");
+
+        eFechaErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        eFechaErrorLabel.setText("ERROR");
+
+        javax.swing.GroupLayout campos2Layout = new javax.swing.GroupLayout(campos2);
+        campos2.setLayout(campos2Layout);
+        campos2Layout.setHorizontalGroup(
+            campos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 871, Short.MAX_VALUE)
+            .addGroup(campos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(campos2Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(campos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(campos2Layout.createSequentialGroup()
+                            .addGap(280, 280, 280)
+                            .addComponent(jLabel10))
+                        .addGroup(campos2Layout.createSequentialGroup()
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(6, 6, 6)
+                            .addComponent(eNumeroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(campos2Layout.createSequentialGroup()
+                            .addGap(76, 76, 76)
+                            .addComponent(eNumeroErrorLabel))
+                        .addGroup(campos2Layout.createSequentialGroup()
+                            .addGap(15, 15, 15)
+                            .addComponent(jLabel4)
+                            .addGap(11, 11, 11)
+                            .addComponent(ePiezasTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(230, 230, 230)
+                            .addComponent(jLabel7)
+                            .addGap(6, 6, 6)
+                            .addComponent(eEstadoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(campos2Layout.createSequentialGroup()
+                            .addGap(76, 76, 76)
+                            .addComponent(ePiezasErrorLabel)
+                            .addGap(407, 407, 407)
+                            .addComponent(eEstadoErrorLabel))
+                        .addGroup(campos2Layout.createSequentialGroup()
+                            .addGap(4, 4, 4)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(11, 11, 11)
+                            .addComponent(eCodigoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(200, 200, 200)
+                            .addComponent(jLabel8)
+                            .addGap(6, 6, 6)
+                            .addComponent(eProveedorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(campos2Layout.createSequentialGroup()
+                            .addGap(76, 76, 76)
+                            .addComponent(eCodigoErrorLabel)
+                            .addGap(405, 405, 405)
+                            .addComponent(eProveedorErrorLabel))
+                        .addGroup(campos2Layout.createSequentialGroup()
+                            .addGap(4, 4, 4)
+                            .addComponent(jLabel6)
+                            .addGap(11, 11, 11)
+                            .addComponent(eNombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(236, 236, 236)
+                            .addComponent(jLabel9)
+                            .addGap(6, 6, 6)
+                            .addComponent(eFechaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(6, 6, 6)
+                            .addComponent(eFechaButton))
+                        .addGroup(campos2Layout.createSequentialGroup()
+                            .addGap(76, 76, 76)
+                            .addComponent(eNombreErrorLabel)
+                            .addGap(405, 405, 405)
+                            .addComponent(eFechaErrorLabel))
+                        .addGroup(campos2Layout.createSequentialGroup()
+                            .addGap(221, 221, 221)
+                            .addComponent(eVolverButton)
+                            .addGap(158, 158, 158)
+                            .addComponent(eGuardarButton)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        campos2Layout.setVerticalGroup(
+            campos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 462, Short.MAX_VALUE)
+            .addGroup(campos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(campos2Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel10)
+                    .addGap(32, 32, 32)
+                    .addGroup(campos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(campos2Layout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addComponent(jLabel3))
+                        .addComponent(eNumeroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(4, 4, 4)
+                    .addComponent(eNumeroErrorLabel)
+                    .addGap(12, 12, 12)
+                    .addGroup(campos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(ePiezasTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(eEstadoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(campos2Layout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addGroup(campos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel7))))
+                    .addGap(6, 6, 6)
+                    .addGroup(campos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(ePiezasErrorLabel)
+                        .addComponent(eEstadoErrorLabel))
+                    .addGap(26, 26, 26)
+                    .addGroup(campos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(eCodigoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(eProveedorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(campos2Layout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addGroup(campos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel8))))
+                    .addGap(6, 6, 6)
+                    .addGroup(campos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(eCodigoErrorLabel)
+                        .addComponent(eProveedorErrorLabel))
+                    .addGap(11, 11, 11)
+                    .addGroup(campos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(eNombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(eFechaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(eFechaButton)
+                        .addGroup(campos2Layout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addGroup(campos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel9))))
+                    .addGap(6, 6, 6)
+                    .addGroup(campos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(eNombreErrorLabel)
+                        .addComponent(eFechaErrorLabel))
+                    .addGap(83, 83, 83)
+                    .addGroup(campos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(eVolverButton)
+                        .addComponent(eGuardarButton))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        modificarEntradasMenu.add(campos2, java.awt.BorderLayout.CENTER);
+
+        ventanas.add(modificarEntradasMenu, java.awt.BorderLayout.CENTER);
+        ventanas.add(jLabel12, java.awt.BorderLayout.LINE_END);
+        ventanas.add(jLabel13, java.awt.BorderLayout.LINE_START);
+        ventanas.add(jLabel14, java.awt.BorderLayout.PAGE_START);
+        ventanas.add(jLabel15, java.awt.BorderLayout.PAGE_END);
+
+        tabla.setOpaque(false);
+        tabla.setLayout(new java.awt.BorderLayout());
 
         tablaStock.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         tablaStock.setModel(new javax.swing.table.DefaultTableModel(
@@ -381,68 +713,13 @@ public class StockMenu extends javax.swing.JPanel {
         tablaStock.getTableHeader().setReorderingAllowed(false);
         scrollStock.setViewportView(tablaStock);
 
-        panelStock.add(scrollStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 30, 1056, 719));
+        tabla.add(scrollStock, java.awt.BorderLayout.CENTER);
 
-        modificarEntradasButton.setBackground(new java.awt.Color(0, 51, 51));
-        modificarEntradasButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                modificarEntradasButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                modificarEntradasButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                modificarEntradasButtonMouseExited(evt);
-            }
-        });
-        panelStock.add(modificarEntradasButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(723, 761, 63, 65));
+        ventanas.add(tabla, java.awt.BorderLayout.CENTER);
 
-        msLabel.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
-        msLabel.setForeground(new java.awt.Color(255, 255, 255));
-        msLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        msLabel.setText("<HTML><center>MODIFICAR <p> SALIDAS");
-        msLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        panelStock.add(msLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 832, -1, -1));
+        panelStock.add(ventanas, java.awt.BorderLayout.CENTER);
 
-        modificarSalidasButton.setBackground(new java.awt.Color(0, 51, 51));
-        modificarSalidasButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                modificarSalidasButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                modificarSalidasButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                modificarSalidasButtonMouseExited(evt);
-            }
-        });
-        panelStock.add(modificarSalidasButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 761, 63, 65));
-
-        meLabel.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
-        meLabel.setForeground(new java.awt.Color(255, 255, 255));
-        meLabel.setText("<HTML>MODIFICAR <p> ENTRADAS");
-        panelStock.add(meLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(723, 832, -1, -1));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1110, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(panelStock, javax.swing.GroupLayout.PREFERRED_SIZE, 1110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 898, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(panelStock, javax.swing.GroupLayout.PREFERRED_SIZE, 898, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        add(panelStock, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     // <editor-fold defaultstate="collapsed" desc="Metodos usados para la interfaz">
@@ -473,12 +750,14 @@ public class StockMenu extends javax.swing.JPanel {
     private void eVolverButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eVolverButtonActionPerformed
         modificarEntradasMenu.setVisible(false);
         scrollStock.setVisible(true);
+        ventanas.add(scrollStock, java.awt.BorderLayout.CENTER);
     }//GEN-LAST:event_eVolverButtonActionPerformed
 
     private void modificarEntradasButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarEntradasButtonMouseClicked
-        modificarEntradasMenu.setVisible(true);
-        scrollStock.setVisible(false);
         modificarSalidasMenu.setVisible(false);
+        scrollStock.setVisible(false);
+        modificarEntradasMenu.setVisible(true);
+        ventanas.add(modificarEntradasMenu, java.awt.BorderLayout.CENTER);
     }//GEN-LAST:event_modificarEntradasButtonMouseClicked
 
     private void modificarEntradasButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarEntradasButtonMouseEntered
@@ -495,6 +774,7 @@ public class StockMenu extends javax.swing.JPanel {
         modificarSalidasMenu.setVisible(true);
         scrollStock.setVisible(false);
         modificarEntradasMenu.setVisible(false);
+        ventanas.add(modificarSalidasMenu, java.awt.BorderLayout.CENTER);
     }//GEN-LAST:event_modificarSalidasButtonMouseClicked
 
     private void modificarSalidasButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarSalidasButtonMouseEntered
@@ -534,6 +814,7 @@ public class StockMenu extends javax.swing.JPanel {
     private void sVolverButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sVolverButtonActionPerformed
         modificarSalidasMenu.setVisible(false);
         scrollStock.setVisible(true);
+        ventanas.add(scrollStock, java.awt.BorderLayout.CENTER);
     }//GEN-LAST:event_sVolverButtonActionPerformed
 
     private void panelStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelStockMouseClicked
@@ -737,6 +1018,10 @@ public class StockMenu extends javax.swing.JPanel {
     
     //<editor-fold defaultstate="collapsed" desc="Variables">
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel botones;
+    private javax.swing.JPanel campos;
+    private javax.swing.JPanel campos2;
+    private javax.swing.JPanel centro;
     private javax.swing.JLabel eCodigoErrorLabel;
     private javax.swing.JTextField eCodigoTextField;
     private javax.swing.JLabel eEstadoErrorLabel;
@@ -754,9 +1039,16 @@ public class StockMenu extends javax.swing.JPanel {
     private javax.swing.JLabel eProveedorErrorLabel;
     private javax.swing.JTextField eProveedorTextField;
     private javax.swing.JButton eVolverButton;
+    private javax.swing.JPanel entradas;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -797,8 +1089,11 @@ public class StockMenu extends javax.swing.JPanel {
     private javax.swing.JLabel sPiezasErrorLabel;
     private javax.swing.JTextField sPiezasTextField;
     private javax.swing.JButton sVolverButton;
+    private javax.swing.JPanel salidas;
     private javax.swing.JScrollPane scrollStock;
+    private javax.swing.JPanel tabla;
     private javax.swing.JTable tablaStock;
+    private javax.swing.JPanel ventanas;
     // End of variables declaration//GEN-END:variables
     Date date = new Date();
     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy"); 

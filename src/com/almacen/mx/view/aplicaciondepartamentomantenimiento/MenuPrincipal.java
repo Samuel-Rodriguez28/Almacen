@@ -8,18 +8,33 @@ package com.almacen.mx.view.aplicaciondepartamentomantenimiento;
 import aplicaciondepartamentomantenimiento.customUI.CustomHeader;
 import aplicaciondepartamentomantenimiento.customUI.ModeloTabla;
 import aplicaciondepartamentomantenimiento.customUI.ScrollBarCustom;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.DisplayMode;
 import java.awt.Font;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.Image;
+import java.awt.Insets;
+import java.awt.Point;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.plaf.basic.BasicTabbedPaneUI;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import org.netbeans.lib.awtextra.AbsoluteConstraints;
 
 
 /**
@@ -32,7 +47,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public MenuPrincipal() {
         initComponents();
         manualInitComponents();
-        this.setLocationRelativeTo(this);
+        this.setLocationRelativeTo(null);
+        
+        
     }
 
     /**
@@ -46,10 +63,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         panelPrincipal = new javax.swing.JPanel();
         barraSuperior = new javax.swing.JPanel();
-        botonMinimizar = new javax.swing.JLabel();
-        botonCerrar = new javax.swing.JLabel();
-        labelMenuActual = new javax.swing.JLabel();
+        texto = new javax.swing.JPanel();
         labelFecha = new javax.swing.JLabel();
+        labelMenuActual = new javax.swing.JLabel();
+        botones = new javax.swing.JPanel();
+        botonMaximizar = new javax.swing.JLabel();
+        botonCerrar = new javax.swing.JLabel();
+        botonMinimizar = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         scrollPanelMenu = new javax.swing.JScrollPane();
         panelMenus = new javax.swing.JPanel();
         entradaMBoton = new javax.swing.JLabel();
@@ -66,13 +88,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         label6 = new javax.swing.JLabel();
         label4 = new javax.swing.JLabel();
         panelContenedor = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        dragComponent = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inventario ");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMinimumSize(new java.awt.Dimension(1000, 500));
         setName("ventana"); // NOI18N
         setUndecorated(true);
-        setResizable(false);
+        setPreferredSize(new java.awt.Dimension(1280, 740));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
@@ -81,12 +106,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         panelPrincipal.setBackground(new java.awt.Color(44, 60, 67));
         panelPrincipal.setForeground(new java.awt.Color(255, 51, 0));
+        panelPrincipal.setMinimumSize(new java.awt.Dimension(1000, 500));
         panelPrincipal.setName("panelPrincipal"); // NOI18N
-        panelPrincipal.setPreferredSize(new java.awt.Dimension(1280, 920));
-        panelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelPrincipal.setPreferredSize(new java.awt.Dimension(1280, 940));
+        panelPrincipal.setLayout(new java.awt.BorderLayout());
 
         barraSuperior.setBackground(new java.awt.Color(64, 110, 36));
         barraSuperior.setAutoscrolls(true);
+        barraSuperior.setPreferredSize(new java.awt.Dimension(1280, 40));
         barraSuperior.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 barraSuperiorMouseDragged(evt);
@@ -96,27 +123,68 @@ public class MenuPrincipal extends javax.swing.JFrame {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 barraSuperiorMousePressed(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                barraSuperiorMouseReleased(evt);
+            }
         });
-        barraSuperior.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        barraSuperior.setLayout(new java.awt.BorderLayout());
 
-        botonMinimizar.setBackground(new java.awt.Color(241, 46, 101));
-        botonMinimizar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        botonMinimizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        botonMinimizar.setText("-");
-        botonMinimizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botonMinimizar.setOpaque(true);
-        botonMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+        texto.setOpaque(false);
+        texto.setPreferredSize(new java.awt.Dimension(280, 40));
+        texto.setLayout(new java.awt.BorderLayout());
+
+        labelFecha.setBackground(new java.awt.Color(0, 102, 0));
+        labelFecha.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
+        labelFecha.setForeground(new java.awt.Color(255, 255, 255));
+        labelFecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelFecha.setText("<html><center>FECHA");
+        labelFecha.setAutoscrolls(true);
+        labelFecha.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        labelFecha.setOpaque(true);
+        labelFecha.setPreferredSize(new java.awt.Dimension(130, 40));
+        labelFecha.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        texto.add(labelFecha, java.awt.BorderLayout.LINE_START);
+        labelFecha.getAccessibleContext().setAccessibleDescription("");
+
+        labelMenuActual.setBackground(new java.awt.Color(0, 102, 0));
+        labelMenuActual.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
+        labelMenuActual.setForeground(new java.awt.Color(255, 255, 255));
+        labelMenuActual.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelMenuActual.setText("<html><center>TEXTO");
+        labelMenuActual.setAutoscrolls(true);
+        labelMenuActual.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        labelMenuActual.setOpaque(true);
+        labelMenuActual.setPreferredSize(new java.awt.Dimension(150, 40));
+        texto.add(labelMenuActual, java.awt.BorderLayout.LINE_END);
+        labelMenuActual.getAccessibleContext().setAccessibleName("FECHA");
+
+        barraSuperior.add(texto, java.awt.BorderLayout.WEST);
+
+        botones.setOpaque(false);
+        botones.setPreferredSize(new java.awt.Dimension(110, 30));
+        botones.setLayout(new java.awt.BorderLayout(10, 10));
+
+        botonMaximizar.setBackground(new java.awt.Color(241, 46, 101));
+        botonMaximizar.setFont(new java.awt.Font("Symbol", 1, 14)); // NOI18N
+        botonMaximizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        botonMaximizar.setText("[");
+        botonMaximizar.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        botonMaximizar.setAlignmentY(0.0F);
+        botonMaximizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonMaximizar.setOpaque(true);
+        botonMaximizar.setPreferredSize(new java.awt.Dimension(30, 20));
+        botonMaximizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botonMinimizarMouseClicked(evt);
+                botonMaximizarMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                botonMinimizarMouseEntered(evt);
+                botonMaximizarMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                botonMinimizarMouseExited(evt);
+                botonMaximizarMouseExited(evt);
             }
         });
-        barraSuperior.add(botonMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 10, 30, 20));
+        botones.add(botonMaximizar, java.awt.BorderLayout.CENTER);
 
         botonCerrar.setBackground(new java.awt.Color(241, 46, 101));
         botonCerrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -124,6 +192,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         botonCerrar.setText("X");
         botonCerrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonCerrar.setOpaque(true);
+        botonCerrar.setPreferredSize(new java.awt.Dimension(30, 20));
         botonCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonCerrarMouseClicked(evt);
@@ -135,41 +204,42 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 botonCerrarMouseExited(evt);
             }
         });
-        barraSuperior.add(botonCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 10, 30, 20));
+        botones.add(botonCerrar, java.awt.BorderLayout.EAST);
         botonCerrar.getAccessibleContext().setAccessibleName("");
 
-        labelMenuActual.setBackground(new java.awt.Color(0, 102, 0));
-        labelMenuActual.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
-        labelMenuActual.setForeground(new java.awt.Color(255, 255, 255));
-        labelMenuActual.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelMenuActual.setText("<html><center>TEXTO");
-        labelMenuActual.setAutoscrolls(true);
-        labelMenuActual.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        labelMenuActual.setOpaque(true);
-        labelMenuActual.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        barraSuperior.add(labelMenuActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 190, 40));
-        labelMenuActual.getAccessibleContext().setAccessibleName("FECHA");
+        botonMinimizar.setBackground(new java.awt.Color(241, 46, 101));
+        botonMinimizar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        botonMinimizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        botonMinimizar.setText("-");
+        botonMinimizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonMinimizar.setOpaque(true);
+        botonMinimizar.setPreferredSize(new java.awt.Dimension(30, 20));
+        botonMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonMinimizarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonMinimizarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonMinimizarMouseExited(evt);
+            }
+        });
+        botones.add(botonMinimizar, java.awt.BorderLayout.WEST);
+        botones.add(jLabel1, java.awt.BorderLayout.PAGE_START);
+        botones.add(jLabel2, java.awt.BorderLayout.PAGE_END);
 
-        labelFecha.setBackground(new java.awt.Color(0, 102, 0));
-        labelFecha.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
-        labelFecha.setForeground(new java.awt.Color(255, 255, 255));
-        labelFecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelFecha.setText("<html><center>FECHA");
-        labelFecha.setAutoscrolls(true);
-        labelFecha.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        labelFecha.setOpaque(true);
-        labelFecha.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        barraSuperior.add(labelFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 40));
+        barraSuperior.add(botones, java.awt.BorderLayout.EAST);
 
-        panelPrincipal.add(barraSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 40));
+        panelPrincipal.add(barraSuperior, java.awt.BorderLayout.NORTH);
 
         scrollPanelMenu.setBackground(new java.awt.Color(0, 153, 51));
-        scrollPanelMenu.setPreferredSize(new java.awt.Dimension(80, 1000));
+        scrollPanelMenu.setPreferredSize(new java.awt.Dimension(180, 900));
 
         panelMenus.setBackground(new java.awt.Color(119, 168, 37));
         panelMenus.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         panelMenus.setMinimumSize(new java.awt.Dimension(150, 0));
-        panelMenus.setPreferredSize(new java.awt.Dimension(10, 2430));
+        panelMenus.setPreferredSize(new java.awt.Dimension(150, 2430));
         panelMenus.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         entradaMBoton.setBackground(new java.awt.Color(102, 153, 0));
@@ -177,6 +247,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         entradaMBoton.setToolTipText("");
         entradaMBoton.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         entradaMBoton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        entradaMBoton.setPreferredSize(new java.awt.Dimension(140, 140));
         entradaMBoton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         entradaMBoton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -195,6 +266,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         salidaMboton.setBackground(new java.awt.Color(102, 153, 0));
         salidaMboton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         salidaMboton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        salidaMboton.setPreferredSize(new java.awt.Dimension(140, 140));
         salidaMboton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 salidaMbotonMouseEntered(evt);
@@ -209,6 +281,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         stockBoton.setBackground(new java.awt.Color(102, 153, 0));
         stockBoton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         stockBoton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        stockBoton.setPreferredSize(new java.awt.Dimension(140, 140));
         stockBoton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 stockBotonMouseEntered(evt);
@@ -220,73 +293,89 @@ public class MenuPrincipal extends javax.swing.JFrame {
         cotizacionBoton.setBackground(new java.awt.Color(102, 153, 0));
         cotizacionBoton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cotizacionBoton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        cotizacionBoton.setPreferredSize(new java.awt.Dimension(140, 140));
         panelMenus.add(cotizacionBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 670, 140, 140));
         cotizacionBoton.getAccessibleContext().setAccessibleName("cotizacion");
 
         seguimientoBoton.setBackground(new java.awt.Color(102, 153, 0));
         seguimientoBoton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         seguimientoBoton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        seguimientoBoton.setPreferredSize(new java.awt.Dimension(140, 140));
         panelMenus.add(seguimientoBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 890, 140, 140));
         seguimientoBoton.getAccessibleContext().setAccessibleName("seguimiento");
 
         cierreMBoton.setBackground(new java.awt.Color(102, 153, 0));
         cierreMBoton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cierreMBoton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        cierreMBoton.setPreferredSize(new java.awt.Dimension(140, 140));
         panelMenus.add(cierreMBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 1110, 140, 140));
 
         articulosBoton.setBackground(new java.awt.Color(102, 153, 0));
         articulosBoton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         articulosBoton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        articulosBoton.setPreferredSize(new java.awt.Dimension(140, 140));
         panelMenus.add(articulosBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 1330, 140, 140));
 
         ordenBoton.setBackground(new java.awt.Color(102, 153, 0));
         ordenBoton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ordenBoton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ordenBoton.setPreferredSize(new java.awt.Dimension(140, 140));
         panelMenus.add(ordenBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 1550, 140, 140));
 
         label1.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
         label1.setForeground(new java.awt.Color(44, 60, 67));
         label1.setText("<html><center>Entrada de  <p> material");
+        label1.setPreferredSize(new java.awt.Dimension(130, 60));
         panelMenus.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 130, -1));
 
         label2.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
         label2.setForeground(new java.awt.Color(44, 60, 67));
         label2.setText("<html><center>Salida de  <p> material");
+        label2.setPreferredSize(new java.awt.Dimension(110, 60));
         panelMenus.add(label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 110, -1));
 
         label3.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
         label3.setForeground(new java.awt.Color(44, 60, 67));
         label3.setText("<html><center>Stock");
+        label3.setPreferredSize(new java.awt.Dimension(110, 30));
         panelMenus.add(label3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 590, 110, -1));
 
         label6.setFont(new java.awt.Font("Corbel", 0, 22)); // NOI18N
         label6.setForeground(new java.awt.Color(44, 60, 67));
         label6.setText("<html><center>Cotizacion");
+        label6.setPreferredSize(new java.awt.Dimension(110, 30));
         panelMenus.add(label6, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 810, 110, -1));
 
         label4.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
         label4.setForeground(new java.awt.Color(44, 60, 67));
         label4.setText("<html><center>Seguimiento");
+        label4.setPreferredSize(new java.awt.Dimension(180, 30));
         panelMenus.add(label4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1030, 180, -1));
 
         scrollPanelMenu.setViewportView(panelMenus);
 
-        panelPrincipal.add(scrollPanelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 180, 900));
+        panelPrincipal.add(scrollPanelMenu, java.awt.BorderLayout.WEST);
 
+        panelContenedor.setBorder(null);
+        panelContenedor.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        panelContenedor.setToolTipText("");
         panelContenedor.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         panelContenedor.setMinimumSize(new java.awt.Dimension(81, 125));
-        panelPrincipal.add(panelContenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 1110, 930));
+        panelContenedor.setPreferredSize(new java.awt.Dimension(11110, 91130));
+        panelPrincipal.add(panelContenedor, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 940, Short.MAX_VALUE)
-        );
+        jPanel1.setOpaque(false);
+        jPanel1.setPreferredSize(new java.awt.Dimension(20, 20));
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        dragComponent.setMaximumSize(new java.awt.Dimension(30, 30));
+        dragComponent.setOpaque(false);
+        dragComponent.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel1.add(dragComponent, java.awt.BorderLayout.PAGE_END);
+
+        panelPrincipal.add(jPanel1, java.awt.BorderLayout.EAST);
+
+        getContentPane().add(panelPrincipal, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -341,6 +430,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void barraSuperiorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraSuperiorMousePressed
         xMouse = evt.getX();
         yMouse = evt.getY();
+        
     }//GEN-LAST:event_barraSuperiorMousePressed
 
     private void botonMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMinimizarMouseClicked
@@ -358,6 +448,36 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
 
     }//GEN-LAST:event_formMouseClicked
+
+    private void botonMaximizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMaximizarMouseClicked
+        maximizarPantalla();
+    }//GEN-LAST:event_botonMaximizarMouseClicked
+    
+    private void maximizarPantalla(){
+        if(!maximizado){
+            this.setExtendedState(MenuPrincipal.MAXIMIZED_BOTH);   
+            this.setSize(this.getWidth(), this.getHeight()-40);
+            maximizado = true;
+        } else{
+            this.setSize(1280, 740);
+            this.setLocationRelativeTo(null);
+            maximizado = false;
+        }       
+    }
+    
+    private void botonMaximizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMaximizarMouseEntered
+        botonMaximizar.setBackground(new Color(241, 200, 200));
+    }//GEN-LAST:event_botonMaximizarMouseEntered
+
+    private void botonMaximizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMaximizarMouseExited
+       botonMaximizar.setBackground(new Color(241, 46, 101));
+    }//GEN-LAST:event_botonMaximizarMouseExited
+
+    private void barraSuperiorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraSuperiorMouseReleased
+        if(maximizado){
+            maximizarPantalla();
+        }
+    }//GEN-LAST:event_barraSuperiorMouseReleased
 
     private void botonesMenuMouseEntered(MouseEvent evt) {
         JLabel boton = (JLabel) evt.getSource();
@@ -440,7 +560,53 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panelContenedor.add(sgm);
 
         panelContenedor.setSelectedIndex(0);
+                
+        panelContenedor.setUI(new BasicTabbedPaneUI() {
+            @Override
+            protected int calculateTabAreaHeight(int tabPlacement, int horizRunCount, int maxTabHeight) {
+                return 0;
 
+            }
+             @Override
+            protected void installDefaults() {
+                super.installDefaults();
+                tabAreaInsets = new Insets(0, 0, 0, 0);
+                contentBorderInsets = new Insets(0, 0, 0, 0);
+            }
+        });
+        
+        
+        dragComponent.setBackground(Color.GRAY);
+        dragComponent.setCursor(Cursor.getPredefinedCursor(Cursor.SE_RESIZE_CURSOR));
+        dragComponent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                isResizing = true;
+                lastX = evt.getXOnScreen();
+                lastY = evt.getYOnScreen();
+            }
+            
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                isResizing = false;
+            }
+        });
+        
+        dragComponent.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                if (isResizing) {
+                    int x = evt.getXOnScreen();
+                    int y = evt.getYOnScreen();
+                    if(!(x < 1000 || y < 600)){
+                        int width = getWidth() + (x - lastX);
+                        int height = getHeight() + (y - lastY);
+                        setSize(width, height);
+                        lastX = x;
+                        lastY = y;
+                    }
+                }
+            }
+        });
+        
+        
     }
 
     private void ponerImagen(JLabel lb, String ruta) {
@@ -452,6 +618,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     //</editor-fold>
     
+     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -489,10 +656,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel articulosBoton;
     private javax.swing.JPanel barraSuperior;
     private javax.swing.JLabel botonCerrar;
+    private javax.swing.JLabel botonMaximizar;
     private javax.swing.JLabel botonMinimizar;
+    private javax.swing.JPanel botones;
     private javax.swing.JLabel cierreMBoton;
     private javax.swing.JLabel cotizacionBoton;
+    private javax.swing.JPanel dragComponent;
     private javax.swing.JLabel entradaMBoton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label2;
     private javax.swing.JLabel label3;
@@ -508,10 +681,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane scrollPanelMenu;
     private javax.swing.JLabel seguimientoBoton;
     private javax.swing.JLabel stockBoton;
+    private javax.swing.JPanel texto;
     // End of variables declaration//GEN-END:variables
     private MouseAdapter maBotonesMenu;
     private int xMouse;
     private int yMouse;
+    private boolean maximizado = false;
     DefaultTableModel modeloTablaEntrada;
     Date date = new Date();
     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
@@ -524,6 +699,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     CotizacionMenu cm = new CotizacionMenu();
     SeguimientoMenu sgm = new SeguimientoMenu();
     BienvenidaMenu bm = new BienvenidaMenu();
-
+    private static boolean isResizing = false;
+    private static int lastX = 0;
+    private static int lastY = 0;
     //</editor-fold>
 }

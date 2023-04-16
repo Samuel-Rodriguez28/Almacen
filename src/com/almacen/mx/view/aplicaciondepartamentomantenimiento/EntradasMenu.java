@@ -38,6 +38,12 @@ public class EntradasMenu extends javax.swing.JPanel {
         panelEntrada = new javax.swing.JPanel();
         scrollEntradas = new javax.swing.JScrollPane();
         tablaEntradas = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+
+        setLayout(new java.awt.BorderLayout(20, 20));
 
         panelEntrada.setBackground(new java.awt.Color(44, 60, 67));
         panelEntrada.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -45,6 +51,7 @@ public class EntradasMenu extends javax.swing.JPanel {
                 panelEntradaMouseClicked(evt);
             }
         });
+        panelEntrada.setLayout(new java.awt.BorderLayout(30, 30));
 
         scrollEntradas.setBackground(new java.awt.Color(40, 60, 67));
 
@@ -72,43 +79,13 @@ public class EntradasMenu extends javax.swing.JPanel {
         tablaEntradas.getTableHeader().setReorderingAllowed(false);
         scrollEntradas.setViewportView(tablaEntradas);
 
-        javax.swing.GroupLayout panelEntradaLayout = new javax.swing.GroupLayout(panelEntrada);
-        panelEntrada.setLayout(panelEntradaLayout);
-        panelEntradaLayout.setHorizontalGroup(
-            panelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEntradaLayout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
-                .addComponent(scrollEntradas, javax.swing.GroupLayout.PREFERRED_SIZE, 1065, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
-        );
-        panelEntradaLayout.setVerticalGroup(
-            panelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelEntradaLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(scrollEntradas, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
-        );
+        panelEntrada.add(scrollEntradas, java.awt.BorderLayout.CENTER);
+        panelEntrada.add(jLabel1, java.awt.BorderLayout.PAGE_START);
+        panelEntrada.add(jLabel2, java.awt.BorderLayout.LINE_START);
+        panelEntrada.add(jLabel3, java.awt.BorderLayout.LINE_END);
+        panelEntrada.add(jLabel4, java.awt.BorderLayout.PAGE_END);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1110, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(panelEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 898, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(panelEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        add(panelEntrada, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     //<editor-fold defaultstate="collapsed" desc="Metodos usados para la interfaz">
@@ -133,6 +110,10 @@ public class EntradasMenu extends javax.swing.JPanel {
 
     //<editor-fold defaultstate="collapsed" desc="Variables">
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel panelEntrada;
     private javax.swing.JScrollPane scrollEntradas;
     private javax.swing.JTable tablaEntradas;
