@@ -19,4 +19,21 @@ public class Conexion {
             return null;
         }
     }
+    
+    public static Connection getConnection(){
+        String conexionUrl = "jdbc:sqlserver://localhost:1433;" +
+                             "database = ALMACEN;" +
+                             "user = sa;" +
+                             "password = 12345;"+
+                             "loginTimeout = 20;" +
+                             "TrustServerCertificate=True;";
+        
+        
+        try {
+            Connection con= DriverManager.getConnection(conexionUrl);
+            return con;
+        } catch (SQLException e) {
+            return null;
+        }
+    }
 }
