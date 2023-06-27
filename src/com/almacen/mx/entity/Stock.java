@@ -6,26 +6,30 @@ package com.almacen.mx.entity;
  */
 public class Stock {
     private int idStock;
-    private int unidades;
+    private int idAreas;
+    private int piezas;
     private int codigo;
     private String nombreArticulo;
     private String marca;
     private String observacion;
     private int minimo;
-    private String medida;
+    
 
     public Stock() {
     }
 
-    public Stock(int idSTOCK, int unidades, int codigo, String nombreArticulo, String marca, String observacion, int minimo, String medida) {
-        this.idStock = idSTOCK;
-        this.unidades = unidades;
+    public Stock(int idStock, int idAreas,int piezas, int codigo, 
+                 String nombreArticulo, String marca, String observacion, int minimo) {
+        
+        this.idStock = idStock;
+        this.idAreas = idAreas;
+        this.piezas = piezas;
         this.codigo = codigo;
         this.nombreArticulo = nombreArticulo;
         this.marca = marca;
         this.observacion = observacion;
         this.minimo = minimo;
-        this.medida = medida;
+        
     }
 
     public int getIdStock() {
@@ -36,14 +40,23 @@ public class Stock {
         this.idStock = idStock;
     }
 
-    public int getUnidades() {
-        return unidades;
+    public int getIdAreas() {
+        return idAreas;
     }
 
-    public void setUnidades(int unidades) {
-        this.unidades = unidades;
+    public void setIdAreas(int idAreas) {
+        this.idAreas = idAreas;
     }
 
+    public int getPiezas() {
+        return piezas;
+    }
+
+    public void setPiezas(int piezas) {
+        this.piezas = piezas;
+    }
+
+    
     public int getCodigo() {
         return codigo;
     }
@@ -83,26 +96,19 @@ public class Stock {
     public void setMinimo(int minimo) {
         this.minimo = minimo;
     }
-
-    public String getMedida() {
-        return medida;
-    }
-
-    public void setMedida(String medida) {
-        this.medida = medida;
-    }
-
+    
+    
     @Override
     public String toString() {
         return "Stock "  
                         + " id STOCK; " + idStock + "\n"
-                        + " Unidades; " + unidades + "\n"
+                        + " id Areas; " + idAreas + "\n"
+                        + " Piezas; " + piezas + "\n"
                         + " Codigo; " + codigo + "\n"
                         + " Nombre de Articulo; " + nombreArticulo + "\n"
                         + " Marca; " + marca + "\n"
-                        + " Observacion; " + observacion + "\n"
-                        + " Minimo; " + minimo + "\n"
-                        + " Medida; " + medida ;
+                        + " Minimo; " + minimo + "\n" ;
+                   
     }
     
     
