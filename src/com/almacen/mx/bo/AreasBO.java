@@ -1,24 +1,24 @@
 
 package com.almacen.mx.bo;
 
-import com.almacen.mx.dao.StockDAO;
+import com.almacen.mx.dao.AreasDAO;
 import com.almacen.mx.db.Conexion;
-import com.almacen.mx.entity.Stock;
+import com.almacen.mx.entity.Areas;
 import java.sql.Connection;
 
 /**
  *
  * @author argus
  */
-public class StockBO {
+public class AreasBO {
     
     private String mensaje= "";
-        private StockDAO sdao = new StockDAO();
-    public String agregarStock( Stock Stock)
+    private AreasDAO adao = new AreasDAO();
+    public String agregarArea( Areas a)
     {
         Connection conn = Conexion.getConnection();
         try {
-            mensaje = sdao.agregarStock(conn, Stock);
+            mensaje = adao.agregarArea(conn, a);
           
         } catch (Exception e) 
         {
@@ -38,11 +38,11 @@ public class StockBO {
         return mensaje;
     }
     
-    public String modificarStock ( Stock Stock)
+    public String modificarAreas ( Areas a)
     {
         Connection conn = Conexion.getConnection();
         try {
-            mensaje = sdao.modificarStock(conn, Stock);
+            mensaje = adao.modificarAreas(conn, a);
           
         } catch (Exception e) 
         {
@@ -60,15 +60,13 @@ public class StockBO {
             }
         }
         return mensaje;
-        
-        
     }
     
-    public String eliminiarStock ( int id)
+    public String eliminiarAreas ( int id)
     {
         Connection conn = Conexion.getConnection();
         try {
-            mensaje = sdao.eliminiarStock(conn, id);
+            mensaje = adao.eliminiarAreas(conn, id);
           
         } catch (Exception e) 
         {

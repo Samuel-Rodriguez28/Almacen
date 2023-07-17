@@ -1,24 +1,24 @@
 
 package com.almacen.mx.bo;
 
-import com.almacen.mx.dao.StockDAO;
+import com.almacen.mx.dao.CierreMaterialDAO;
 import com.almacen.mx.db.Conexion;
-import com.almacen.mx.entity.Stock;
+import com.almacen.mx.entity.CiereMaterial;
 import java.sql.Connection;
 
 /**
  *
  * @author argus
  */
-public class StockBO {
-    
+public class CierredeMaterialBO {
+   
     private String mensaje= "";
-        private StockDAO sdao = new StockDAO();
-    public String agregarStock( Stock Stock)
+    private CierreMaterialDAO cidao = new CierreMaterialDAO();
+    public String agregarCiereMaterial( CiereMaterial ci)
     {
         Connection conn = Conexion.getConnection();
         try {
-            mensaje = sdao.agregarStock(conn, Stock);
+            mensaje = cidao.agregarCiereMaterial(conn, ci);
           
         } catch (Exception e) 
         {
@@ -38,11 +38,11 @@ public class StockBO {
         return mensaje;
     }
     
-    public String modificarStock ( Stock Stock)
+    public String modificarCiereMaterial ( CiereMaterial ci)
     {
         Connection conn = Conexion.getConnection();
         try {
-            mensaje = sdao.modificarStock(conn, Stock);
+            mensaje = cidao.modificarCiereMaterial(conn, ci);
           
         } catch (Exception e) 
         {
@@ -60,15 +60,13 @@ public class StockBO {
             }
         }
         return mensaje;
-        
-        
     }
     
-    public String eliminiarStock ( int id)
+    public String eliminiarCiereMaterial ( int id)
     {
         Connection conn = Conexion.getConnection();
         try {
-            mensaje = sdao.eliminiarStock(conn, id);
+            mensaje = cidao.eliminiarCiereMaterial(conn, id);
           
         } catch (Exception e) 
         {
@@ -90,3 +88,5 @@ public class StockBO {
         
     }
 }
+    
+
