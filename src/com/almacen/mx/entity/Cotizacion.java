@@ -1,5 +1,3 @@
-
-
 package com.almacen.mx.entity;
 
 /**¨

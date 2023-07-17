@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package aplicaciondepartamentomantenimiento.customUI;
+
+ package aplicaciondepartamentomantenimiento.customUI;
 
 import java.awt.Color;
 import java.awt.Component;
