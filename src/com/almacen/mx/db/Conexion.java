@@ -1,13 +1,39 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.almacen.mx.db;
 
-/**
- *
- * @author Samuel
- */
+import java.sql.*;
+
 public class Conexion {
+    public static Connection conectUser(String user, String password){
+        String conexionUrl = "jdbc:sqlserver://localhost:1433;" +
+                             "database = ALMACEN;" +
+                             "user = " + user +";" +
+                             "password = " + password +";"+
+                             "loginTimeout = 20;" +
+                             "TrustServerCertificate=True;";
+        
+        
+        try {
+            Connection con= DriverManager.getConnection(conexionUrl);
+            return con;
+        } catch (SQLException e) {
+            return null;
+        }
+    }
     
+    public static Connection getConnection(){
+        String conexionUrl = "jdbc:sqlserver://localhost:1433;" +
+                             "database = ALMACEN;" +
+                             "user = sa;" +
+                             "password = 12345;"+
+                             "loginTimeout = 20;" +
+                             "TrustServerCertificate=True;";
+        
+        
+        try {
+            Connection con= DriverManager.getConnection(conexionUrl);
+            return con;
+        } catch (SQLException e) {
+            return null;
+        }
+    }
 }
