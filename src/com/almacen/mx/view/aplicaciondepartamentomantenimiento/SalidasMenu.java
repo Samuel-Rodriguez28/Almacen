@@ -4,8 +4,8 @@
  */
 package com.almacen.mx.view.aplicaciondepartamentomantenimiento;
 
-import aplicaciondepartamentomantenimiento.customUI.CustomHeader;
-import aplicaciondepartamentomantenimiento.customUI.ModeloTabla;
+import com.almacen.mx.view.aplicaciondepartamentomantenimiento.customUI.CustomHeader;
+import com.almacen.mx.view.aplicaciondepartamentomantenimiento.customUI.ModeloTabla;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.table.DefaultTableModel;
@@ -85,7 +85,7 @@ public class SalidasMenu extends javax.swing.JPanel {
         JTableHeader headerSalidas = tablaSalida.getTableHeader();
 	headerSalidas.setDefaultRenderer(new CustomHeader());
 	tablaSalida.setTableHeader(headerSalidas);
-        String[] titulosSalida = {"Numero","Piezas","Codigo","Nombre","Personal","Lugar","Estado","Fecha"};
+        String[] titulosSalida = {"Numero","Piezas","Codigo","Nombre","Personal","Lugar","Estado","Fecha", "Observacion"};
         Object[][] datosSalida = new Object[0][0];
         modeloTablaSalida = new ModeloTabla(datosSalida,titulosSalida, false);           
         tablaSalida.getTableHeader().setBackground(new Color(64,110,36));

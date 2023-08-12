@@ -4,9 +4,9 @@
  */
 package com.almacen.mx.view.aplicaciondepartamentomantenimiento;
 
-import aplicaciondepartamentomantenimiento.customUI.CustomHeader;
-import aplicaciondepartamentomantenimiento.customUI.ModeloTabla;
+import com.almacen.mx.view.aplicaciondepartamentomantenimiento.customUI.CustomHeader;
 import aplicaciondepartamentomantenimiento.customUI.ScrollBarCustom;
+import com.almacen.mx.view.aplicaciondepartamentomantenimiento.customUI.ModeloTabla;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.table.DefaultTableModel;
@@ -63,21 +63,16 @@ public class EntradasMenu extends javax.swing.JPanel {
             new String [] {
                 "Numero", "Piezas", "Codigo", "Nombre", "Estado", "Proveedor", "Fecha"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                true, true, true, true, true, true, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         tablaEntradas.setGridColor(new java.awt.Color(40, 60, 67));
         tablaEntradas.setRowHeight(30);
         tablaEntradas.setSelectionBackground(new java.awt.Color(0, 204, 102));
         tablaEntradas.getTableHeader().setResizingAllowed(false);
         tablaEntradas.getTableHeader().setReorderingAllowed(false);
         scrollEntradas.setViewportView(tablaEntradas);
+        if (tablaEntradas.getColumnModel().getColumnCount() > 0) {
+            tablaEntradas.getColumnModel().getColumn(6).setResizable(false);
+        }
 
         panelEntrada.add(scrollEntradas, java.awt.BorderLayout.CENTER);
         panelEntrada.add(jLabel1, java.awt.BorderLayout.PAGE_START);
@@ -97,9 +92,7 @@ public class EntradasMenu extends javax.swing.JPanel {
         JTableHeader headerEntradas = tablaEntradas.getTableHeader();
         headerEntradas.setDefaultRenderer(new CustomHeader());
         tablaEntradas.setTableHeader(headerEntradas);
-        tablaEntradas.getTableHeader().setBackground(new Color(64, 110, 36));
-        tablaEntradas.getTableHeader().setFont(new Font("Corbel", 1, 1));
-        String[] titulos = {"Numero", "Piezas", "Codigo", "Nombre", "Estado", "Proveedor", "Fecha"};
+        String[] titulos = {"Numero", "Piezas", "Codigo", "Nombre", "Estado", "Proveedor", "Fecha", "Observaciones"};
         Object[][] datos = new Object[0][0];
         modeloTablaEntrada = new ModeloTabla(datos, titulos, false);
         tablaEntradas.setModel(modeloTablaEntrada);
