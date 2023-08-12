@@ -5,36 +5,20 @@
  */
 package com.almacen.mx.view.aplicaciondepartamentomantenimiento;
 
-import aplicaciondepartamentomantenimiento.customUI.CustomHeader;
-import aplicaciondepartamentomantenimiento.customUI.ModeloTabla;
 import aplicaciondepartamentomantenimiento.customUI.ScrollBarCustom;
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Cursor;
-import java.awt.DisplayMode;
-import java.awt.Font;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Insets;
-import java.awt.Point;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-import org.netbeans.lib.awtextra.AbsoluteConstraints;
 
 
 /**
@@ -48,8 +32,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         initComponents();
         manualInitComponents();
         this.setLocationRelativeTo(null);
-        
-        
     }
 
     /**
@@ -356,7 +338,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         panelPrincipal.add(scrollPanelMenu, java.awt.BorderLayout.WEST);
 
-        panelContenedor.setBorder(null);
         panelContenedor.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         panelContenedor.setToolTipText("");
         panelContenedor.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
