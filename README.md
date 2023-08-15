@@ -36,6 +36,22 @@ Como se puede observar en la imagen anterior, se realizaron algunos cambios nece
 
 ![image](https://github.com/Samuel-Rodriguez28/Almacen/assets/99507229/e0232e1c-4904-4ce9-b943-b5d0e0f2ffdb)
 
+# 15/agosto/2023
+
+Se agrego la funcion de reescalar la ventana, en la primera imagen se puede ver la ventana en su resolucion minima, y en la segunda es en 
+pantalla completa
+
+![image](https://github.com/Samuel-Rodriguez28/Almacen/assets/121456096/919e7453-bf0c-48f6-a180-7ddc72d05376)
+
+![image](https://github.com/Samuel-Rodriguez28/Almacen/assets/121456096/599f608d-7ed6-4d1c-895d-ba93c92fcb6f)
+
+# 15/agosto/2023
+Se agrego la ventana de salidas de stock menu
+![image](https://github.com/Samuel-Rodriguez28/Almacen/assets/121456096/e6c0b2f7-330e-4ad9-a2ba-5e3739709c83)
+
+
+
+
 
 
 
