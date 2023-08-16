@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
- package aplicaciondepartamentomantenimiento.customUI;
+ package com.almacen.mx.view.aplicaciondepartamentomantenimiento.customUI;
 
 import java.awt.Color;
 import java.awt.Component;

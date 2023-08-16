@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package aplicaciondepartamentomantenimiento.customUI;
+package com.almacen.mx.view.aplicaciondepartamentomantenimiento.customUI;
 
 import javax.swing.table.DefaultTableModel;
 

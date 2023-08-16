@@ -76,17 +76,17 @@
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel4" max="32767" attributes="0"/>
-                                          <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="dateChooser" max="32767" attributes="0"/>
-                                          <Component id="observacionesTextPane" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="243" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
                                       <Component id="fechaErrorLabel" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="dateChooser" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="observacionesTextPane" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="243" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -130,28 +130,28 @@
                           <Component id="jLabel3" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="jLabel4" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="piezasTextField" min="-2" pref="35" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                              <Component id="dateChooser" min="-2" pref="28" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="fechaErrorLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="piezasErrorLabel" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="piezasTextField" min="-2" pref="35" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="fechaErrorLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="piezasErrorLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="162" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="limpiarButton" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="guardarButton" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="volverButton" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="dateChooser" min="-2" pref="35" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="158" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="limpiarButton" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="guardarButton" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="volverButton" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -165,7 +165,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="DESTINO:"/>
+                <Property name="text" type="java.lang.String" value="DESTINO"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="codigoTextField">
@@ -183,7 +183,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="CODIGO PRODUCTO:"/>
+                <Property name="text" type="java.lang.String" value="CODIGO PRODUCTO"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="destinoComboBox">
@@ -209,7 +209,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="PIEZAS:"/>
+                <Property name="text" type="java.lang.String" value="PIEZAS"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="piezasTextField">
@@ -227,7 +227,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="FECHA:"/>
+                <Property name="text" type="java.lang.String" value="FECHA"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
@@ -238,10 +238,8 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="OBSERVACIONES:"/>
+                <Property name="text" type="java.lang.String" value="OBSERVACIONES"/>
               </Properties>
-            </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="dateChooser">
             </Component>
             <Component class="javax.swing.JButton" name="limpiarButton">
               <Properties>
@@ -335,6 +333,8 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="ERROR"/>
               </Properties>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="dateChooser">
             </Component>
           </SubComponents>
         </Container>

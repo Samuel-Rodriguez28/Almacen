@@ -4,6 +4,11 @@
  */
 package com.almacen.mx.view.aplicaciondepartamentomantenimiento;
 
+import aplicaciondepartamentomantenimiento.customUI.ScrollBarCustom;
+import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author acost
@@ -15,6 +20,7 @@ public class EntradaStockMenu extends javax.swing.JPanel {
      */
     public EntradaStockMenu() {
         initComponents();
+        manualInit();
     }
 
     /**
@@ -26,51 +32,743 @@ public class EntradaStockMenu extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
+        scrollPanelPrincipal = new javax.swing.JScrollPane();
+        panelPrincipal = new javax.swing.JPanel();
+        ordenCheckBox = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
+        codigoTextField = new javax.swing.JTextField();
+        codigoErrorLabel = new javax.swing.JLabel();
+        ordenErrorLabel = new javax.swing.JLabel();
+        ordenTextField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        requisicionErrorLabel = new javax.swing.JLabel();
+        requisicionTextField = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        facturaTextField = new javax.swing.JTextField();
+        facturaErrorLabel = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        solicitudErrorLabel = new javax.swing.JLabel();
+        entregaErrorLabel = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        unidadesErrorLabel = new javax.swing.JLabel();
+        unidadesTextField = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        estadoErrorLabel = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        areaComboBox = new javax.swing.JComboBox<>();
+        nuevoCheckBox = new javax.swing.JCheckBox();
+        nombreErrorLabel = new javax.swing.JLabel();
+        nombreTextField = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        marcaErrorLabel = new javax.swing.JLabel();
+        marcaTextField = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        areaErrorLabel = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        minimoErrorLabel = new javax.swing.JLabel();
+        minimoTextField = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        estadoComboBox = new javax.swing.JComboBox<>();
+        jLabel25 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        obervacionesTextPane = new javax.swing.JTextPane();
+        volverButton = new javax.swing.JButton();
+        limpiarButton = new javax.swing.JButton();
+        guardarButton = new javax.swing.JButton();
+        solicitudDateChooser = new com.toedter.calendar.JDateChooser();
+        entregaDateChooser = new com.toedter.calendar.JDateChooser();
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        setBackground(new java.awt.Color(0, 102, 102));
+        setPreferredSize(new java.awt.Dimension(770, 646));
+        setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        panelPrincipal.setBackground(new java.awt.Color(0, 102, 102));
+        panelPrincipal.setPreferredSize(new java.awt.Dimension(950, 650));
+
+        ordenCheckBox.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        ordenCheckBox.setForeground(new java.awt.Color(255, 255, 255));
+        ordenCheckBox.setText("INGRESAR SIN ORDEN DE COMPRA");
+        ordenCheckBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ordenCheckBoxMouseClicked(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("WORK-IN PROGRESS");
+        jLabel1.setText("CODIGO DE PRODUCTO");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(304, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(253, 253, 253))
+        codigoTextField.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+
+        codigoErrorLabel.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
+        codigoErrorLabel.setForeground(new java.awt.Color(255, 0, 51));
+        codigoErrorLabel.setText("ERROR");
+
+        ordenErrorLabel.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
+        ordenErrorLabel.setForeground(new java.awt.Color(255, 0, 51));
+        ordenErrorLabel.setText("ERROR");
+
+        ordenTextField.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("ORDEN DE COMPRA");
+
+        requisicionErrorLabel.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
+        requisicionErrorLabel.setForeground(new java.awt.Color(255, 0, 51));
+        requisicionErrorLabel.setText("ERROR");
+
+        requisicionTextField.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("NUM DE REQUISICION");
+
+        jLabel7.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("NUM DE FACTURA");
+
+        facturaTextField.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+
+        facturaErrorLabel.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
+        facturaErrorLabel.setForeground(new java.awt.Color(255, 0, 51));
+        facturaErrorLabel.setText("ERROR");
+
+        jLabel9.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("FECHA DE SOLICITUD");
+
+        solicitudErrorLabel.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
+        solicitudErrorLabel.setForeground(new java.awt.Color(255, 0, 51));
+        solicitudErrorLabel.setText("ERROR");
+
+        entregaErrorLabel.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
+        entregaErrorLabel.setForeground(new java.awt.Color(255, 0, 51));
+        entregaErrorLabel.setText("ERROR");
+
+        jLabel12.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("FECHA DE ENTREGA");
+
+        unidadesErrorLabel.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
+        unidadesErrorLabel.setForeground(new java.awt.Color(255, 0, 51));
+        unidadesErrorLabel.setText("ERROR");
+
+        unidadesTextField.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+
+        jLabel14.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("UNIDADES");
+
+        estadoErrorLabel.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
+        estadoErrorLabel.setForeground(new java.awt.Color(255, 0, 51));
+        estadoErrorLabel.setText("ERROR");
+
+        jLabel16.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("ESTADO");
+
+        areaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Item 2", "Item 3", "Item 4" }));
+        areaComboBox.setBorder(null);
+
+        nuevoCheckBox.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        nuevoCheckBox.setForeground(new java.awt.Color(255, 255, 255));
+        nuevoCheckBox.setText("PRODUCTO NUEVO");
+        nuevoCheckBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nuevoCheckBoxMouseClicked(evt);
+            }
+        });
+
+        nombreErrorLabel.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
+        nombreErrorLabel.setForeground(new java.awt.Color(255, 0, 51));
+        nombreErrorLabel.setText("ERROR");
+
+        nombreTextField.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+
+        jLabel18.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("NOMBRE DE PRODUCTO");
+
+        marcaErrorLabel.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
+        marcaErrorLabel.setForeground(new java.awt.Color(255, 0, 51));
+        marcaErrorLabel.setText("ERROR");
+
+        marcaTextField.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+
+        jLabel20.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("MARCA");
+
+        areaErrorLabel.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
+        areaErrorLabel.setForeground(new java.awt.Color(255, 0, 51));
+        areaErrorLabel.setText("ERROR");
+
+        jLabel22.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("AREA");
+
+        minimoErrorLabel.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
+        minimoErrorLabel.setForeground(new java.awt.Color(255, 0, 51));
+        minimoErrorLabel.setText("ERROR");
+
+        minimoTextField.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+
+        jLabel24.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel24.setText("MINIMO DE PRODUCTO");
+
+        estadoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Item 2", "Item 3", "Item 4" }));
+        estadoComboBox.setBorder(null);
+
+        jLabel25.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel25.setText("OBSERVACIONES");
+
+        jScrollPane1.setViewportView(obervacionesTextPane);
+
+        volverButton.setBackground(new java.awt.Color(102, 102, 102));
+        volverButton.setText("VOLVER");
+        volverButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                volverButtonMouseClicked(evt);
+            }
+        });
+
+        limpiarButton.setBackground(new java.awt.Color(255, 51, 51));
+        limpiarButton.setText("LIMPIAR");
+        limpiarButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                limpiarButtonMouseClicked(evt);
+            }
+        });
+
+        guardarButton.setBackground(new java.awt.Color(0, 153, 51));
+        guardarButton.setText("GUARDAR");
+        guardarButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                guardarButtonMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
+        panelPrincipal.setLayout(panelPrincipalLayout);
+        panelPrincipalLayout.setHorizontalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ordenCheckBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(codigoErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(solicitudErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                        .addComponent(solicitudDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(58, 58, 58))
+                                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel1)
+                                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(codigoTextField))
+                                        .addGap(60, 60, 60)))
+                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(ordenErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(entregaErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
+                                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(ordenTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelPrincipalLayout.createSequentialGroup()
+                                                .addComponent(jLabel12)
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                            .addComponent(entregaDateChooser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(46, 46, 46))))
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addComponent(nuevoCheckBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(nombreErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel18)
+                                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                                .addComponent(nombreTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                                                .addGap(38, 38, 38)))
+                                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
+                                                .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGap(61, 61, 61))
+                                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(marcaErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                                        .addComponent(marcaTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                                                        .addGap(22, 22, 22)))
+                                                .addGap(22, 22, 22))))
+                                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jScrollPane1)
+                                            .addComponent(jLabel25))
+                                        .addGap(285, 285, 285))
+                                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                        .addComponent(volverButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(areaErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(28, 28, 28))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
+                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(areaComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(requisicionTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(unidadesTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelPrincipalLayout.createSequentialGroup()
+                                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(requisicionErrorLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(unidadesErrorLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(58, 58, 58)))
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(minimoErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(facturaErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel24)
+                                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                        .addComponent(limpiarButton)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(guardarButton)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
+                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(minimoTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(estadoComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(facturaTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelPrincipalLayout.createSequentialGroup()
+                                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(estadoErrorLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(101, 101, 101))))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(189, 189, 189)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(242, Short.MAX_VALUE))
+        panelPrincipalLayout.setVerticalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(ordenCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(requisicionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(requisicionErrorLabel))
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(facturaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(facturaErrorLabel)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(estadoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(estadoErrorLabel))
+                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(codigoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(codigoErrorLabel))
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ordenTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ordenErrorLabel)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(2, 2, 2)
+                                .addComponent(solicitudDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(solicitudErrorLabel)
+                                    .addComponent(unidadesErrorLabel)))
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel14))
+                                .addGap(2, 2, 2)
+                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(entregaDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(unidadesTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(entregaErrorLabel)))))
+                .addGap(18, 18, 18)
+                .addComponent(nuevoCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nombreErrorLabel)
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel25)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(limpiarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(guardarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(37, 37, 37)
+                        .addComponent(volverButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelPrincipalLayout.createSequentialGroup()
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel24))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                        .addComponent(minimoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(minimoErrorLabel))
+                                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                        .addComponent(areaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(areaErrorLabel))))
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addComponent(jLabel20)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(marcaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(marcaErrorLabel)
+                                .addGap(6, 6, 6)))
+                        .addContainerGap(320, Short.MAX_VALUE))))
         );
 
-        jScrollPane1.setViewportView(jPanel1);
+        scrollPanelPrincipal.setViewportView(panelPrincipal);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
-        );
+        add(scrollPanelPrincipal, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    //<editor-fold defaultstate="collapsed" desc="Metodos Interfaz">
+    private void guardarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarButtonMouseClicked
+        comprobarDatos();
+    }//GEN-LAST:event_guardarButtonMouseClicked
 
+    private void limpiarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limpiarButtonMouseClicked
+        limpiar();
+    }//GEN-LAST:event_limpiarButtonMouseClicked
+
+    private void volverButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverButtonMouseClicked
+        StockMenu.volverStock();
+    }//GEN-LAST:event_volverButtonMouseClicked
+
+    private void ordenCheckBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ordenCheckBoxMouseClicked
+        noOrden();
+    }//GEN-LAST:event_ordenCheckBoxMouseClicked
+
+    private void nuevoCheckBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nuevoCheckBoxMouseClicked
+        nuevoProducto();
+    }//GEN-LAST:event_nuevoCheckBoxMouseClicked
+
+    private void manualInit() {
+        scrollPanelPrincipal.setVerticalScrollBar(new ScrollBarCustom());
+        scrollPanelPrincipal.getVerticalScrollBar().setUnitIncrement(30);
+        //scrollPanelPrincipal.setHorizontalScrollBar(new ScrollBarCustom());
+        scrollPanelPrincipal.getHorizontalScrollBar().setUnitIncrement(5);
+
+        solicitudDateChooser.setDate(date);
+        entregaDateChooser.setDate(date);
+
+        cambiarFormatoFecha();
+        ocultarErrores();
+        noOrden();
+        nuevoProducto();
+    }
+
+    private void ocultarErrores() {
+        codigoErrorLabel.setText("");
+        ordenErrorLabel.setText("");
+        requisicionErrorLabel.setText("");
+        facturaErrorLabel.setText("");
+        solicitudErrorLabel.setText("");
+        entregaErrorLabel.setText("");
+        unidadesErrorLabel.setText("");
+        estadoErrorLabel.setText("");
+        nombreErrorLabel.setText("");
+        marcaErrorLabel.setText("");
+        areaErrorLabel.setText("");
+        minimoErrorLabel.setText("");
+    }
+
+    private void limpiar() {
+        codigoTextField.setText("");
+        ordenTextField.setText("");
+        requisicionTextField.setText("");
+        facturaTextField.setText("");
+        solicitudDateChooser.setDate(date);
+        entregaDateChooser.setDate(date);
+        unidadesTextField.setText("");
+        estadoComboBox.setSelectedIndex(0);
+        nombreTextField.setText("");
+        marcaTextField.setText("");
+        areaComboBox.setSelectedIndex(0);
+        minimoTextField.setText("");
+        ocultarErrores();
+    }
+
+    private void noOrden() {
+        if (ordenCheckBox.isSelected()) {
+            ordenTextField.setEditable(true);
+            ordenTextField.setBackground(new Color(255, 255, 255));
+            requisicionTextField.setEditable(true);
+            requisicionTextField.setBackground(new Color(255, 255, 255));
+            facturaTextField.setEditable(true);
+            facturaTextField.setBackground(new Color(255, 255, 255));
+        } else {
+            ordenTextField.setEditable(false);
+            ordenTextField.setBackground(new Color(153, 153, 153));
+            requisicionTextField.setEditable(false);
+            requisicionTextField.setBackground(new Color(153, 153, 153));
+            facturaTextField.setEditable(false);
+            facturaTextField.setBackground(new Color(153, 153, 153));
+        }
+    }
+
+    private void nuevoProducto() {
+        if (nuevoCheckBox.isSelected()) {
+            nombreTextField.setEditable(true);
+            nombreTextField.setBackground(new Color(255, 255, 255));
+            marcaTextField.setEditable(true);
+            marcaTextField.setBackground(new Color(255, 255, 255));
+            areaComboBox.setEnabled(true);
+            //areaComboBox.setBackground(new Color(255,255,255));
+            minimoTextField.setEditable(true);
+            minimoTextField.setBackground(new Color(255, 255, 255));
+        } else {
+            nombreTextField.setEditable(false);
+            nombreTextField.setBackground(new Color(153, 153, 153));
+            marcaTextField.setEditable(false);
+            marcaTextField.setBackground(new Color(153, 153, 153));
+            areaComboBox.setEnabled(false);
+            //areaComboBox.setBackground(new Color(153,153,153));
+            minimoTextField.setEditable(false);
+            minimoTextField.setBackground(new Color(153, 153, 153));
+        }
+    }
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Metodos para obtener datos">
+    private void cambiarFormatoFecha() {
+        // EL STRING QUE RECIBE ESTE METODO ES EL FORMATO EN EL QUE SE MUESTRA LA FECHA DE HAY EN EL DISPLAY DE FECHA
+        // ESTE FORMATO OBEDECE EL FORMATO DE CUALQUEIR DATEFORMAT, ASI QUE SI SE DESEA CAMBIAR PARA ADAPTARLO PARA EL 
+        // FORMATO QUE ACCEPTE LA BASE DE DATOS SE DEBERA CONSIDERAR ESE FORMATO
+        formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+        solicitudDateChooser.setDateFormatString("dd-MM-yyyy");
+        entregaDateChooser.setDateFormatString("dd-MM-yyyy");
+    }
+
+    //ESTE METODO COMPROBARA QUE CADA DATO EN LOS ELEMENTOS PARA RELLENAR SEA DEL FORMATO APROPIADO Y QUE NO ESTE VACIO 
+    //SI TODOS LOS DATOS ESTAN CORRECTOS, DEVUELVE TRUE, DE LO CONTRARIO DEVUELVE UN FALSE
+    //CUANDO UN FORMATO NO ESTE CORRECTO, SE INDICARA CON UN MENSAJE JUSTO DEBAJO DEL ELEMENTO EL CUAL GENERE EL ERROR
+    private boolean comprobarDatos() {
+        ocultarErrores();
+        //ESTA VARIABLE VALIDARA SI HUBO UN ERROR DURANTE LAS COMPROBACIONES, SI LO HAY ESTE VALOR SERA TRUE
+        boolean error = false;
+
+        //Comprobar que el texto escrito en codigo de preducto sean solo numeros
+        try {
+            Integer.valueOf(codigoTextField.getText());
+        } catch (Exception e) {
+            codigoErrorLabel.setText("Error");
+            error = true;
+        }
+
+        //Solo combrobara los siguientes campos si la orden de compra esta seleccionada
+        if (ordenCheckBox.isSelected()) {
+
+            //Comprobar que orden de compra no este vacio (ACEPTA NUMEROS Y LETRAS)
+            if (ordenTextField.getText().isBlank() || ordenTextField.getText().isEmpty()) {
+                ordenErrorLabel.setText("ERROR");
+                error = true;
+            }
+
+            //Comprobar que el texto escrito numero de requisicion sean solo numeros
+            try {
+                Integer.valueOf(requisicionTextField.getText());
+            } catch (Exception e) {
+                requisicionErrorLabel.setText("Error");
+                error = true;
+            }
+
+            //Comprobar que el texto escrito numero de factura sean solo numeros
+            try {
+                Integer.valueOf(facturaTextField.getText());
+            } catch (Exception e) {
+                facturaErrorLabel.setText("Error");
+                error = true;
+            }
+        }
+
+        //COMPROBAR QUE EL FORMATO ESCRITO EN SOLICITUD DATECHOOSER SEA IGUAL AL DEL "formatoFecha"
+        try {
+            Date fechaE = null;
+            fechaE = formatoFecha.parse(formatoFecha.format(solicitudDateChooser.getDate()));
+        } catch (Exception ex) {
+            solicitudErrorLabel.setText("Error");
+            error = true;
+        }
+
+        //COMPROBAR QUE EL FORMATO ESCRITO EN ENTREGA DATECHOOSER SEA IGUAL AL DEL "formatoFecha"
+        try {
+            Date fechaE = null;
+            fechaE = formatoFecha.parse(formatoFecha.format(entregaDateChooser.getDate()));
+        } catch (Exception ex) {
+            entregaErrorLabel.setText("Error");
+            error = true;
+        }
+
+        //Comprobar que el texto escrito en unidades sean solo numeros
+        try {
+            Integer.valueOf(unidadesTextField.getText());
+        } catch (Exception e) {
+            unidadesErrorLabel.setText("Error");
+            error = true;
+        }
+
+        //COMPROBAR QUE EL ELEMENTO SELECCIONADO EN ESTADO COMBOBOX NO SEA EL PRIMER ELEMENTO
+        //ESTO ESTA TOMANDO EN CUENTA QUE SIEMPRE EL PRIMER ELEMENTO DEL COMBOBOX ESTARA VACIA
+        if (estadoComboBox.getSelectedIndex() == 0) {
+            estadoErrorLabel.setText("Error");
+            error = true;
+        }
+
+        //Solo comprobara los siguientes campos si la opcion de nuevo producto esta marcada
+        if (nuevoCheckBox.isSelected()) {
+
+            //Comprobar que el texto escrito en nombre producto no este vacio(ACEPTA NUMEROS Y LETRAS)
+            if (nombreTextField.getText().isBlank() || nombreTextField.getText().isEmpty()) {
+                nombreErrorLabel.setText("ERROR");
+                error = true;
+            }
+
+            //Comprobar que el texto escrito en marca no este vacio(ACEPTA NUMEROS Y LETRAS)
+            if (marcaTextField.getText().isBlank() || marcaTextField.getText().isEmpty()) {
+                marcaErrorLabel.setText("ERROR");
+                error = true;
+            }
+
+            //COMPROBAR QUE EL ELEMENTO SELECCIONADO EN AREA COMBOBOX NO SEA EL PRIMER ELEMENTO
+            //ESTO ESTA TOMANDO EN CUENTA QUE SIEMPRE EL PRIMER ELEMENTO DEL COMBOBOX ESTARA VACIA
+            if (areaComboBox.getSelectedIndex() == 0) {
+                areaErrorLabel.setText("Error");
+                error = true;
+            }
+
+            //Comprobar que el texto escrito en minimo de producto sean solo numeros
+            try {
+                Integer.valueOf(minimoTextField.getText());
+            } catch (Exception e) {
+                minimoErrorLabel.setText("Error");
+                error = true;
+            }
+        }
+        
+        //SI HUBO ALGUN ERROR REGRESA FALSE
+        if(error){
+            return false;
+        }
+        
+        //SI NO HUBO NINGUN ERROR REGRESA TRUE
+        ocultarErrores();
+        return true;
+    }
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Variables">
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> areaComboBox;
+    private javax.swing.JLabel areaErrorLabel;
+    private javax.swing.JLabel codigoErrorLabel;
+    private javax.swing.JTextField codigoTextField;
+    private com.toedter.calendar.JDateChooser entregaDateChooser;
+    private javax.swing.JLabel entregaErrorLabel;
+    private javax.swing.JComboBox<String> estadoComboBox;
+    private javax.swing.JLabel estadoErrorLabel;
+    private javax.swing.JLabel facturaErrorLabel;
+    private javax.swing.JTextField facturaTextField;
+    private javax.swing.JButton guardarButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton limpiarButton;
+    private javax.swing.JLabel marcaErrorLabel;
+    private javax.swing.JTextField marcaTextField;
+    private javax.swing.JLabel minimoErrorLabel;
+    private javax.swing.JTextField minimoTextField;
+    private javax.swing.JLabel nombreErrorLabel;
+    private javax.swing.JTextField nombreTextField;
+    private javax.swing.JCheckBox nuevoCheckBox;
+    private javax.swing.JTextPane obervacionesTextPane;
+    private javax.swing.JCheckBox ordenCheckBox;
+    private javax.swing.JLabel ordenErrorLabel;
+    private javax.swing.JTextField ordenTextField;
+    private javax.swing.JPanel panelPrincipal;
+    private javax.swing.JLabel requisicionErrorLabel;
+    private javax.swing.JTextField requisicionTextField;
+    private javax.swing.JScrollPane scrollPanelPrincipal;
+    private com.toedter.calendar.JDateChooser solicitudDateChooser;
+    private javax.swing.JLabel solicitudErrorLabel;
+    private javax.swing.JLabel unidadesErrorLabel;
+    private javax.swing.JTextField unidadesTextField;
+    private javax.swing.JButton volverButton;
     // End of variables declaration//GEN-END:variables
+    private SimpleDateFormat formatoFecha;
+    Date date = new Date();
+    //</editor-fold>
 }
