@@ -49,6 +49,17 @@ pantalla completa
 Se agrego la ventana de salidas de stock menu
 ![image](https://github.com/Samuel-Rodriguez28/Almacen/assets/121456096/e6c0b2f7-330e-4ad9-a2ba-5e3739709c83)
 
+# 16/agosto/2023
+Se agrego la validacion de datos a los campos en stock menu
+![image](https://github.com/Samuel-Rodriguez28/Almacen/assets/121456096/b5576a6b-96a8-4d9b-9e49-75df57006ebb)
+
+# 16/agosto/2023
+Se agrego la ventana de entradas de stock menu ya con su validacion de datos
+![image](https://github.com/Samuel-Rodriguez28/Almacen/assets/121456096/edbea154-6908-4b8b-9c2d-27ce7aaef1fe)
+![image](https://github.com/Samuel-Rodriguez28/Almacen/assets/121456096/550046f6-ffc5-430c-b026-68dfbf535fe8)
+![image](https://github.com/Samuel-Rodriguez28/Almacen/assets/121456096/15ab4d6c-5ad0-4d0d-bcd4-4fd25f33a2c0)
+![image](https://github.com/Samuel-Rodriguez28/Almacen/assets/121456096/40b1e086-6f63-4619-bbe1-717d13c090e5)
+
 
 
 
