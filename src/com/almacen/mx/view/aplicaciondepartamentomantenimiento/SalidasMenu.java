@@ -4,12 +4,18 @@
  */
 package com.almacen.mx.view.aplicaciondepartamentomantenimiento;
 
+import com.almacen.mx.bo.SalidaBO;
+import com.almacen.mx.db.Conexion;
 import com.almacen.mx.view.aplicaciondepartamentomantenimiento.customUI.CustomHeader;
 import com.almacen.mx.view.aplicaciondepartamentomantenimiento.customUI.ModeloTabla;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,6 +29,9 @@ public class SalidasMenu extends javax.swing.JPanel {
     public SalidasMenu() {
         initComponents();
         manualInitComponents();
+        SalidaBO sabo = new SalidaBO();
+        
+        sabo.listarSalidaID(tablaSalida);
     }
 
     /**
@@ -85,12 +94,6 @@ public class SalidasMenu extends javax.swing.JPanel {
         JTableHeader headerSalidas = tablaSalida.getTableHeader();
 	headerSalidas.setDefaultRenderer(new CustomHeader());
 	tablaSalida.setTableHeader(headerSalidas);
-        String[] titulosSalida = {"Numero","Piezas","Codigo","Nombre","Personal","Lugar","Estado","Fecha", "Observacion"};
-        Object[][] datosSalida = new Object[0][0];
-        modeloTablaSalida = new ModeloTabla(datosSalida,titulosSalida, false);           
-        tablaSalida.getTableHeader().setBackground(new Color(64,110,36));
-        tablaSalida.getTableHeader().setFont(new Font("Corbel", 1, 1));
-        tablaSalida.setModel(modeloTablaSalida);
     }
     //</editor-fold>
 

@@ -2,9 +2,17 @@
 package com.almacen.mx.dao;
 
 import com.almacen.mx.entity.Entrada;
+import com.almacen.mx.view.aplicaciondepartamentomantenimiento.customUI.ModeloTabla;
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,16 +24,16 @@ public class EntradaDAO {
     public String agregarEntrada (Connection con, Entrada ent)
     {
         PreparedStatement pst =null;
-        String sql = "INSERT INTO ENTRADA (idENTRADA, idSTOCK, UNIDADES, NOM_ART, ESTADO, FECHA)" + 
+        String sql = "INSERT INTO ENTRADA (idENTRADA, idSTOCK, idCIERRE_MATERIAL, UNIDADES, ESTADO, FECHA)" + 
                 "VALUES (?, ?, ?,?,?,?)";
         try {
             pst = con.prepareStatement(sql);
             pst.setInt(1, ent.getIdEntrada());
             pst.setInt(2, ent.getIdStock());
-            pst.setInt(3, ent.getUnidades());
-            pst.setString(4, ent.getNombreArticulo());
+            pst.setInt(3, ent.getIdCierre_Material());
+            pst.setInt(4, ent.getUnidades());
             pst.setString(5, ent.getEstado());
-            pst.setInt(6, ent.getFecha());
+            pst.setString(6, ent.getFecha());
             mensaje = "guardado correctamente";
             pst.execute();
             pst.close();
@@ -39,15 +47,15 @@ public class EntradaDAO {
     public String modificarEntrada (Connection con, Entrada ent)
     {
         PreparedStatement pst =null;
-        String sql = "UPDATE ENTRADA SET UNIDADES =?, NOM_ART =?,ESTADO =?,FECHA =?)" + 
+        String sql = "UPDATE ENTRADA SET IDCIERRE_MATERIAL = ?, IDSTOCK = ? UNIDADES =?, ESTADO =?,FECHA =? " + 
                 "WHERE idENTRADA =?";
         try {
             pst = con.prepareStatement(sql);
-            pst.setInt(1, ent.getUnidades());
-            pst.setString(2, ent.getNombreArticulo());
-            pst.setString(3, ent.getEstado());
-            pst.setInt(4, ent.getFecha());
-             pst.setInt(5, ent.getIdEntrada());
+            pst.setInt(1, ent.getIdStock());
+            pst.setInt(2, ent.getIdStock());
+            pst.setInt(3, ent.getUnidades());
+            pst.setString(4, ent.getEstado());
+             pst.setString(5, ent.getFecha());
             mensaje = "ACTUALIZADO correctamente";
             pst.execute();
             pst.close();
@@ -74,5 +82,46 @@ public class EntradaDAO {
             mensaje = "no se pudo eliminar correctamente \n " + e.getMessage();
         }
         return mensaje;
+    }
+    
+    //MÉTODOS PARA MOSTRAR REGISTROS
+    public void listEntradaID(Connection con, JTable tablaSalida){
+        String[] titulosSalida = {"NUMERO", "ORDEN COMPRA", "ARTICULO", "UNIDADES", "ESTADO", "FECHA"};
+        Object[][] datosSalida = new Object[0][0];
+        
+        DefaultTableModel modeloTablaSalida = new ModeloTabla(datosSalida,titulosSalida, false); 
+        tablaSalida.getTableHeader().setBackground(new Color(64,110,36));
+        tablaSalida.getTableHeader().setFont(new Font("Corbel", 1, 1));
+        
+        String sql = "SELECT en.idENTRADA, ci.OC, st.NOM_ART AS ARTICULO, en.UNIDADES, en.ESTADO, en.FECHA " +
+                     "FROM ENTRADA en " +
+                     "JOIN CIERRE_MATERIAL ci ON en.idCIERRE_MATERIAL = ci.idCIERRE_MATERIAL " +
+                     "JOIN STOCK st ON en.idSTOCK = st.idSTOCK " +
+                     "ORDER BY en.idENTRADA;";
+        
+        String [] filas = new String[6];
+        
+        Statement st = null;
+        ResultSet rs = null;
+        
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                for (int i = 0; i < 6; i++) {
+                    filas[i] = rs.getString(i+1);
+                }
+                
+                modeloTablaSalida.addRow(filas);
+            }
+            
+            tablaSalida.setModel(modeloTablaSalida);
+            
+            st.close();
+            rs.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }
 }

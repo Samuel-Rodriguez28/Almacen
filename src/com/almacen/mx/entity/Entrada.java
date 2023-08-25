@@ -8,21 +8,29 @@ public class Entrada {
     
     private int idEntrada;
     private int idStock;
+    private int idCierre_Material;
+
+    public void setIdCierre_Material(int idCierre_Material) {
+        this.idCierre_Material = idCierre_Material;
+    }
+
+    public int getIdCierre_Material() {
+        return idCierre_Material;
+    }
     private int unidades;
-    private String nombreArticulo;
     private String estado;
-    private int fecha;
+    private String fecha;
 
     public Entrada() {
     }
 
-    public Entrada(int idEntrada, int idStock, int unidades, String nombreArticulo, String estado, int fecha) {
+    public Entrada(int idEntrada, int idStock, int idCierre_Material, int unidades, String estado, String fecha) {
         this.idEntrada = idEntrada;
         this.idStock = idStock;
         this.unidades = unidades;
-        this.nombreArticulo = nombreArticulo;
         this.estado = estado;
         this.fecha = fecha;
+        this.idCierre_Material = idCierre_Material;
     }
 
     public int getIdEntrada() {
@@ -49,14 +57,6 @@ public class Entrada {
         this.unidades = unidades;
     }
 
-    public String getNombreArticulo() {
-        return nombreArticulo;
-    }
-
-    public void setNombreArticulo(String nombreArticulo) {
-        this.nombreArticulo = nombreArticulo;
-    }
-
     public String getEstado() {
         return estado;
     }
@@ -65,24 +65,11 @@ public class Entrada {
         this.estado = estado;
     }
 
-    public int getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(int fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
-
-    @Override
-    public String toString() {
-        return "Entrada" +
-                "idEntrada; " + idEntrada + "\n"
-                + " idStock; " + idStock + "\n"
-                + " Unidades; " + unidades + "\n"
-                + " Nombre Articulo; " + nombreArticulo + "\n"
-                + " Estado; " + estado + "\n"
-                + " Fecha; " + fecha ;
-    }
-    
-    
 }

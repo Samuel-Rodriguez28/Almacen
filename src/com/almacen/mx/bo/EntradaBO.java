@@ -5,6 +5,7 @@ import com.almacen.mx.dao.EntradaDAO;
 import com.almacen.mx.db.Conexion;
 import com.almacen.mx.entity.Entrada;
 import java.sql.Connection;
+import javax.swing.JTable;
 
 /**
  *
@@ -85,6 +86,21 @@ public class EntradaBO {
         }
         return mensaje;
         
+        
+    }
+    
+    //MÉTODOS PARA LISTAR REGISTROS
+    public void listarEntradaID (JTable tablaSalida)
+    {
+        Connection conn = Conexion.getConnection();
+        
+        edao.listEntradaID(conn, tablaSalida);
+        try {
+            conn.close();
+        } catch (Exception e) 
+        {
+            System.out.print(e.getMessage());
+        }
         
     }
 }

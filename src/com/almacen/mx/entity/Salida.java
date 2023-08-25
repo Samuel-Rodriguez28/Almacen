@@ -11,21 +11,18 @@ public class Salida {
     private int idStock;
     private int piezas;
     private String personal;
-    private String destino;
     private String observacion;
-    private int fecha;
+    private String fecha;
 
     public Salida() {
     }
 
     public Salida(int idSalida,int idDestino, int idStock, 
-                  int piezas, String personal, String destino, 
-                  String observacion, int fecha) {
+                  int piezas, String personal, String observacion, String fecha) {
         this.idSalida = idSalida;
         this.idStock = idStock;
         this.piezas = piezas;
         this.personal = personal;
-        this.destino = destino;
         this.observacion = observacion;
         this.fecha = fecha;
     }
@@ -72,14 +69,6 @@ public class Salida {
         this.personal = personal;
     }
 
-    public String getDestino() {
-        return destino;
-    }
-
-    public void setDestino(String destino) {
-        this.destino = destino;
-    }
-
     public String getObservacion() {
         return observacion;
     }
@@ -88,27 +77,11 @@ public class Salida {
         this.observacion = observacion;
     }
 
-    public int getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(int fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
-
-    @Override
-    public String toString() {
-        return "Salida" +
-                  " idSalida; " + idSalida + "\n"
-                + " idDestino; " + idDestino + "\n"
-                + " idStock; " + idStock + "\n"
-                + " Piezas; " + piezas + "\n"
-                + " Personal; " + personal + "\n"
-                + " Destino; " + destino + "\n"
-                + " Observacion; " + observacion + "\n"
-                + " Fecha; " + fecha ;
-    }
-    
-    
-    
 }

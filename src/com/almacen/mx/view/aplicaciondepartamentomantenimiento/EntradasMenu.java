@@ -6,6 +6,7 @@ package com.almacen.mx.view.aplicaciondepartamentomantenimiento;
 
 import com.almacen.mx.view.aplicaciondepartamentomantenimiento.customUI.CustomHeader;
 import aplicaciondepartamentomantenimiento.customUI.ScrollBarCustom;
+import com.almacen.mx.bo.EntradaBO;
 import com.almacen.mx.view.aplicaciondepartamentomantenimiento.customUI.ModeloTabla;
 import java.awt.Color;
 import java.awt.Font;
@@ -24,6 +25,10 @@ public class EntradasMenu extends javax.swing.JPanel {
     public EntradasMenu() {
         initComponents();
         manualInitComponents();
+        
+        EntradaBO ebo = new EntradaBO();
+        
+        ebo.listarEntradaID(tablaEntradas);
     }
 
     /**
@@ -92,12 +97,6 @@ public class EntradasMenu extends javax.swing.JPanel {
         JTableHeader headerEntradas = tablaEntradas.getTableHeader();
         headerEntradas.setDefaultRenderer(new CustomHeader());
         tablaEntradas.setTableHeader(headerEntradas);
-        String[] titulos = {"Numero", "Piezas", "Codigo", "Nombre", "Estado", "Proveedor", "Fecha", "Observaciones"};
-        Object[][] datos = new Object[0][0];
-        modeloTablaEntrada = new ModeloTabla(datos, titulos, false);
-        tablaEntradas.setModel(modeloTablaEntrada);
-        scrollEntradas.setVerticalScrollBar(new ScrollBarCustom());
-        scrollEntradas.getVerticalScrollBar().setUnitIncrement(30);
     }
     //</editor-fold>
 

@@ -175,6 +175,7 @@ public class EntradaStockMenu extends javax.swing.JPanel {
         nuevoCheckBox.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         nuevoCheckBox.setForeground(new java.awt.Color(255, 255, 255));
         nuevoCheckBox.setText("PRODUCTO NUEVO");
+        nuevoCheckBox.setEnabled(false);
         nuevoCheckBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 nuevoCheckBoxMouseClicked(evt);
@@ -553,19 +554,19 @@ public class EntradaStockMenu extends javax.swing.JPanel {
 
     private void noOrden() {
         if (ordenCheckBox.isSelected()) {
-            ordenTextField.setEditable(true);
-            ordenTextField.setBackground(new Color(255, 255, 255));
-            requisicionTextField.setEditable(true);
-            requisicionTextField.setBackground(new Color(255, 255, 255));
-            facturaTextField.setEditable(true);
-            facturaTextField.setBackground(new Color(255, 255, 255));
-        } else {
             ordenTextField.setEditable(false);
             ordenTextField.setBackground(new Color(153, 153, 153));
             requisicionTextField.setEditable(false);
             requisicionTextField.setBackground(new Color(153, 153, 153));
             facturaTextField.setEditable(false);
             facturaTextField.setBackground(new Color(153, 153, 153));
+        } else {
+            ordenTextField.setEditable(true);
+            ordenTextField.setBackground(new Color(255, 255, 255));
+            requisicionTextField.setEditable(true);
+            requisicionTextField.setBackground(new Color(255, 255, 255));
+            facturaTextField.setEditable(true);
+            facturaTextField.setBackground(new Color(255, 255, 255));
         }
     }
 

@@ -5,6 +5,7 @@ import com.almacen.mx.dao.StockDAO;
 import com.almacen.mx.db.Conexion;
 import com.almacen.mx.entity.Stock;
 import java.sql.Connection;
+import javax.swing.JTable;
 
 /**
  *
@@ -87,6 +88,21 @@ public class StockBO {
         }
         return mensaje;
         
+        
+    }
+    
+    //MÉTODOS PARA LISTAR REGISTROS
+    public void listarStockID (JTable tablaSalida)
+    {
+        Connection conn = Conexion.getConnection();
+        
+        sdao.listStockID(conn, tablaSalida);
+        try {
+            conn.close();
+        } catch (Exception e) 
+        {
+            System.out.print(e.getMessage());
+        }
         
     }
 }

@@ -21,7 +21,7 @@ public class RequisicionesDAO {
      try {
             pst = con.prepareStatement(sql);
             pst.setInt(1, r.getIdRequisiciones());
-            pst.setInt(2, r.getJef());
+            pst.setString(2, String.valueOf(r.getJef()));
             pst.setInt(3, r.getPlan());
             pst.setInt(4, r.getSub());
             pst.setInt(5, r.getDir());

@@ -5,6 +5,7 @@ import com.almacen.mx.dao.SalidaDAO;
 import com.almacen.mx.db.Conexion;
 import com.almacen.mx.entity.Salida;
 import java.sql.Connection;
+import javax.swing.JTable;
 
 /**
  *
@@ -85,6 +86,20 @@ public class SalidaBO {
         }
         return mensaje;
         
+        
+    }
+    
+    public void listarSalidaID (JTable tablaSalida)
+    {
+        Connection conn = Conexion.getConnection();
+        
+        sadao.listSalidaID(conn, tablaSalida);
+        try {
+            conn.close();
+        } catch (Exception e) 
+        {
+            System.out.print(e.getMessage());
+        }
         
     }
 }

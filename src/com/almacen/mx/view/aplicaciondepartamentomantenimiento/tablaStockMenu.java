@@ -5,6 +5,7 @@
 package com.almacen.mx.view.aplicaciondepartamentomantenimiento;
 
 import aplicaciondepartamentomantenimiento.customUI.ScrollBarCustom;
+import com.almacen.mx.bo.StockBO;
 import com.almacen.mx.view.aplicaciondepartamentomantenimiento.customUI.CustomHeader;
 import com.almacen.mx.view.aplicaciondepartamentomantenimiento.customUI.ModeloTabla;
 import java.awt.Color;
@@ -24,6 +25,10 @@ public class tablaStockMenu extends javax.swing.JPanel {
     public tablaStockMenu() {
         initComponents();
         manualInitComponents();
+        
+        StockBO sbo = new StockBO();
+        
+        sbo.listarStockID(tablaStock);
     }
 
     /**
@@ -83,15 +88,7 @@ public class tablaStockMenu extends javax.swing.JPanel {
     private void manualInitComponents(){
         JTableHeader headerStock = tablaStock.getTableHeader();
 	headerStock.setDefaultRenderer(new CustomHeader());
-	tablaStock.setTableHeader(headerStock);
-        String[] titulosStock = {"Numero","Piezas","Codigo","Nombre","Modelo","Proveedor","Estado","Observacion","Fecha"};
-        Object[][] datosStock = new Object[0][0];
-        modeloTablaStock = new ModeloTabla(datosStock,titulosStock, false);           
-        tablaStock.getTableHeader().setBackground(new Color(64,110,36));
-        tablaStock.getTableHeader().setFont(new Font("Corbel", 1, 1));
-        tablaStock.setModel(modeloTablaStock);
-        scrollStock.setVerticalScrollBar(new ScrollBarCustom());
-        scrollStock.getVerticalScrollBar().setUnitIncrement(30);       
+	tablaStock.setTableHeader(headerStock);       
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

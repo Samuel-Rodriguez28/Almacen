@@ -11,7 +11,6 @@ public class Stock {
     private int codigo;
     private String nombreArticulo;
     private String marca;
-    private String observacion;
     private int minimo;
     
 
@@ -19,7 +18,7 @@ public class Stock {
     }
 
     public Stock(int idStock, int idAreas,int piezas, int codigo, 
-                 String nombreArticulo, String marca, String observacion, int minimo) {
+                 String nombreArticulo, String marca, int minimo) {
         
         this.idStock = idStock;
         this.idAreas = idAreas;
@@ -27,7 +26,6 @@ public class Stock {
         this.codigo = codigo;
         this.nombreArticulo = nombreArticulo;
         this.marca = marca;
-        this.observacion = observacion;
         this.minimo = minimo;
         
     }
@@ -79,14 +77,6 @@ public class Stock {
 
     public void setMarca(String marca) {
         this.marca = marca;
-    }
-
-    public String getObservacion() {
-        return observacion;
-    }
-
-    public void setObservacion(String observacion) {
-        this.observacion = observacion;
     }
 
     public int getMinimo() {
