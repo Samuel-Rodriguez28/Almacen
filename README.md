@@ -60,6 +60,9 @@ Se agrego la ventana de entradas de stock menu ya con su validacion de datos
 ![image](https://github.com/Samuel-Rodriguez28/Almacen/assets/121456096/15ab4d6c-5ad0-4d0d-bcd4-4fd25f33a2c0)
 ![image](https://github.com/Samuel-Rodriguez28/Almacen/assets/121456096/40b1e086-6f63-4619-bbe1-717d13c090e5)
 
+# 24/agosto/2023
+Se agrego la ventana de cotizacion
+![image](https://github.com/Samuel-Rodriguez28/Almacen/assets/121456096/6da8823a-5268-4bc6-8807-0833381d02c3)
 
 
 
