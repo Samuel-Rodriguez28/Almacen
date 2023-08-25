@@ -65,8 +65,7 @@ Se agrego la ventana de cotizacion
 ![image](https://github.com/Samuel-Rodriguez28/Almacen/assets/121456096/6da8823a-5268-4bc6-8807-0833381d02c3)
 
 
-#24/Agosto/2023
-Se agregaron funciones para visualizar los registros en las tablas
+# Se agregaron funciones para visualizar los registros en las tablas
 
 
 ![Captura_Stock](https://github.com/Samuel-Rodriguez28/Almacen/assets/123322127/733dbd64-fe0f-4496-abf9-5bf9b849d3d4)
