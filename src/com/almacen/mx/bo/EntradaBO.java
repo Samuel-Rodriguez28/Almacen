@@ -103,4 +103,20 @@ public class EntradaBO {
         }
         
     }
+    
+    //MÉTODO PARA ENCONTRAR EL ULTIMO REGISTRO DE ENTRADA
+    public int idMaxEntrada(){
+        Connection conn = Conexion.getConnection();
+        
+        int idMaxEntrada = edao.idMaxEntrada(conn);
+        
+        try {
+            conn.close();
+        } catch (Exception e) 
+        {
+            System.out.print(e.getMessage());
+        }
+        
+        return idMaxEntrada;
+    }
 }

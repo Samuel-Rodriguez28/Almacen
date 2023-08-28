@@ -12,13 +12,14 @@ public class Stock {
     private String nombreArticulo;
     private String marca;
     private int minimo;
+    private String medida;
     
 
     public Stock() {
     }
 
     public Stock(int idStock, int idAreas,int piezas, int codigo, 
-                 String nombreArticulo, String marca, int minimo) {
+                 String nombreArticulo, String marca, int minimo, String medida) {
         
         this.idStock = idStock;
         this.idAreas = idAreas;
@@ -27,7 +28,15 @@ public class Stock {
         this.nombreArticulo = nombreArticulo;
         this.marca = marca;
         this.minimo = minimo;
-        
+        this.medida = medida;
+    }
+
+    public void setMedida(String medida) {
+        this.medida = medida;
+    }
+
+    public String getMedida() {
+        return medida;
     }
 
     public int getIdStock() {

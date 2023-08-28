@@ -18,15 +18,14 @@ import javax.swing.table.JTableHeader;
  * @author acost
  */
 public class EntradasMenu extends javax.swing.JPanel {
-
+    
+    EntradaBO ebo = new EntradaBO();
     /**
      * Creates new form EntradasMenu
      */
     public EntradasMenu() {
         initComponents();
         manualInitComponents();
-        
-        EntradaBO ebo = new EntradaBO();
         
         ebo.listarEntradaID(tablaEntradas);
     }

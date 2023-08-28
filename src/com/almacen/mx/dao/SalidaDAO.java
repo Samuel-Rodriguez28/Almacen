@@ -99,7 +99,7 @@ public class SalidaDAO {
         tablaSalida.getTableHeader().setBackground(new Color(64,110,36));
         tablaSalida.getTableHeader().setFont(new Font("Corbel", 1, 1));
         
-        String sql = "SELECT sa.IDSALIDA, dest.NOMBRE, st.NOM_ART, sa.PZAS, sa.PERSONAL, sa.OBSERV, sa.FECHA " +
+        String sql = "SELECT sa.IDSALIDA, dest.NOMBRE, st.NOM_ART, sa.PZAS, sa.PERSONAL, sa.OBSERV, FORMAT(sa.FECHA, 'dd-MM-yyyy') as FECHA " +
                      "FROM SALIDA sa " +
                      "JOIN DESTINO dest ON sa.IDDESTINO = dest.IDDESTINO " +
                      "JOIN STOCK st ON sa.idSTOCK = st.IDSTOCK " +

@@ -5,32 +5,38 @@ package com.almacen.mx.entity;
 public class CiereMaterial {
 
     private int idCierrematerial;
+    private int idRequisicion;
     private int oc;
-    private int numReq;
     private int numFac;
-    private String proveedor;
     private String fechaSolicitud;
     private String fechaEntrada;
-    private String nombreArticulo;
     private String observacion;
+    private String nombre;
 
     
     public CiereMaterial() {
     }
 
-    public CiereMaterial(int idCierrematerial, int oc, int numReq, int numFac, String proveedor, 
-                        String fechaSolicitud, String fechaEntrada, String nombreArticulo, String observacion) {
+    public CiereMaterial(int idCierrematerial, int oc, int numFac, 
+                        String fechaSolicitud, String fechaEntrada, String observacion, int idRequisicion, String nombre) {
         this.idCierrematerial = idCierrematerial;
         this.oc = oc;
-        this.numReq = numReq;
         this.numFac = numFac;
-        this.proveedor = proveedor;
         this.fechaSolicitud = fechaSolicitud;
         this.fechaEntrada = fechaEntrada;
-        this.nombreArticulo = nombreArticulo;
         this.observacion = observacion;
+        this.idRequisicion = idRequisicion;
+        this.nombre = nombre;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
     public int getIdCierrematerial() {
         return idCierrematerial;
     }
@@ -39,6 +45,16 @@ public class CiereMaterial {
         this.idCierrematerial = idCierrematerial;
     }
 
+    public int getIdRequisicion() {
+        return idRequisicion;
+    }
+
+    public void setIdRequisicion(int idRequisicion) {
+        this.idRequisicion = idRequisicion;
+    }
+
+    
+    
     public int getOc() {
         return oc;
     }
@@ -47,28 +63,12 @@ public class CiereMaterial {
         this.oc = oc;
     }
 
-    public int getNumReq() {
-        return numReq;
-    }
-
-    public void setNumReq(int numReq) {
-        this.numReq = numReq;
-    }
-
     public int getNumFac() {
         return numFac;
     }
 
     public void setNumFac(int numFac) {
         this.numFac = numFac;
-    }
-
-    public String getProveedor() {
-        return proveedor;
-    }
-
-    public void setProveedor(String proveedor) {
-        this.proveedor = proveedor;
     }
 
     public String getFechaSolicitud() {
@@ -87,34 +87,12 @@ public class CiereMaterial {
         this.fechaEntrada = fechaEntrada;
     }
 
-    public String getNombreArticulo() {
-        return nombreArticulo;
-    }
-
-    public void setNombreArticulo(String nombreArticulo) {
-        this.nombreArticulo = nombreArticulo;
-    }
-
     public String getObservacion() {
         return observacion;
     }
 
     public void setObservacion(String observacion) {
         this.observacion = observacion;
-    }
-
-    @Override
-    public String toString() {
-        return "CiereMaterial"
-                + "id Cierrematerial; " + idCierrematerial + "\n"
-                + " oc; " + oc + "\n"
-                + " Numero de Reqistro; " + numReq + "\n"
-                + " Numero de Factor; " + numFac + "\n"
-                + " proveedor; " + proveedor + "\n"
-                + " Fecha Solicitud; " + fechaSolicitud + "\n"
-                + " Fecha Entrada; " + fechaEntrada + "\n"
-                + " Nombre Articulo; " + nombreArticulo + "\n"
-                + " Observacion; " + observacion ;
     }
     
     

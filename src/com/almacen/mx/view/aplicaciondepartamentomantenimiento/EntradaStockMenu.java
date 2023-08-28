@@ -5,9 +5,17 @@
 package com.almacen.mx.view.aplicaciondepartamentomantenimiento;
 
 import aplicaciondepartamentomantenimiento.customUI.ScrollBarCustom;
+import com.almacen.mx.bo.CierredeMaterialBO;
+import com.almacen.mx.bo.EntradaBO;
+import com.almacen.mx.bo.StockBO;
+import com.almacen.mx.entity.CiereMaterial;
+import com.almacen.mx.entity.Entrada;
+import com.almacen.mx.entity.Stock;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,12 +23,25 @@ import java.util.Date;
  */
 public class EntradaStockMenu extends javax.swing.JPanel {
 
+    private int maxiNumSt = 0;
+    private int maxiNumEn = 0;
+    private int maxiNumCi = 0;
+    StockBO sbo = new StockBO();
+    CierredeMaterialBO cibo = new CierredeMaterialBO();
+    EntradaBO ebo = new EntradaBO();
+
     /**
      * Creates new form EntradaStockMenu
      */
     public EntradaStockMenu() {
         initComponents();
         manualInit();
+        maxiNumSt = sbo.idMaxStock();
+        maxiNumEn = ebo.idMaxEntrada();
+        maxiNumCi = cibo.idMaxCierre();
+        sbo.fillAreas(areaComboBox);
+        dummyText.setText("");
+        sbo.fillReq(requisicionComboBox);
     }
 
     /**
@@ -42,7 +63,6 @@ public class EntradaStockMenu extends javax.swing.JPanel {
         ordenTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         requisicionErrorLabel = new javax.swing.JLabel();
-        requisicionTextField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         facturaTextField = new javax.swing.JTextField();
@@ -78,6 +98,10 @@ public class EntradaStockMenu extends javax.swing.JPanel {
         guardarButton = new javax.swing.JButton();
         solicitudDateChooser = new com.toedter.calendar.JDateChooser();
         entregaDateChooser = new com.toedter.calendar.JDateChooser();
+        jLabel23 = new javax.swing.JLabel();
+        medidaComboBox = new javax.swing.JComboBox<>();
+        dummyText = new javax.swing.JLabel();
+        requisicionComboBox = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(0, 102, 102));
         setPreferredSize(new java.awt.Dimension(770, 646));
@@ -100,6 +124,14 @@ public class EntradaStockMenu extends javax.swing.JPanel {
         jLabel1.setText("CODIGO DE PRODUCTO");
 
         codigoTextField.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        codigoTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                codigoTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                codigoTextFieldFocusLost(evt);
+            }
+        });
 
         codigoErrorLabel.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
         codigoErrorLabel.setForeground(new java.awt.Color(255, 0, 51));
@@ -110,6 +142,11 @@ public class EntradaStockMenu extends javax.swing.JPanel {
         ordenErrorLabel.setText("ERROR");
 
         ordenTextField.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        ordenTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                ordenTextFieldFocusLost(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -118,8 +155,6 @@ public class EntradaStockMenu extends javax.swing.JPanel {
         requisicionErrorLabel.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
         requisicionErrorLabel.setForeground(new java.awt.Color(255, 0, 51));
         requisicionErrorLabel.setText("ERROR");
-
-        requisicionTextField.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -169,7 +204,6 @@ public class EntradaStockMenu extends javax.swing.JPanel {
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("ESTADO");
 
-        areaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Item 2", "Item 3", "Item 4" }));
         areaComboBox.setBorder(null);
 
         nuevoCheckBox.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
@@ -187,6 +221,11 @@ public class EntradaStockMenu extends javax.swing.JPanel {
         nombreErrorLabel.setText("ERROR");
 
         nombreTextField.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        nombreTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nombreTextFieldFocusGained(evt);
+            }
+        });
 
         jLabel18.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
@@ -220,7 +259,7 @@ public class EntradaStockMenu extends javax.swing.JPanel {
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("MINIMO DE PRODUCTO");
 
-        estadoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Item 2", "Item 3", "Item 4" }));
+        estadoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PERFECTO", "BUENO", "DEFECTUOSO", "DAÑADO", "INUTIL" }));
         estadoComboBox.setBorder(null);
 
         jLabel25.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
@@ -252,6 +291,19 @@ public class EntradaStockMenu extends javax.swing.JPanel {
                 guardarButtonMouseClicked(evt);
             }
         });
+
+        jLabel23.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setText("MEDIDA");
+
+        medidaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "METROS", "METROS2", "CM", "CM2", "UNIDADES", "CAJAS", "LITROS", "MILILITROS", "GRAMOS", "KILOGRAMOS" }));
+        medidaComboBox.setBorder(null);
+
+        dummyText.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        dummyText.setForeground(new java.awt.Color(255, 255, 255));
+        dummyText.setText("DUMMY TEXT");
+
+        requisicionComboBox.setBorder(null);
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
@@ -306,7 +358,7 @@ public class EntradaStockMenu extends javax.swing.JPanel {
                                             .addComponent(nombreErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel18)
                                             .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                                .addComponent(nombreTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                                                .addComponent(nombreTextField)
                                                 .addGap(38, 38, 38)))
                                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
@@ -316,16 +368,16 @@ public class EntradaStockMenu extends javax.swing.JPanel {
                                                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(marcaErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                                        .addComponent(marcaTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                                                        .addComponent(marcaTextField)
                                                         .addGap(22, 22, 22)))
                                                 .addGap(22, 22, 22))))
                                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jScrollPane1)
-                                            .addComponent(jLabel25))
-                                        .addGap(285, 285, 285))
-                                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                        .addComponent(volverButton)
+                                            .addComponent(jLabel25)
+                                            .addComponent(volverButton)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(medidaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelPrincipalLayout.createSequentialGroup()
@@ -335,8 +387,8 @@ public class EntradaStockMenu extends javax.swing.JPanel {
                                 .addGap(28, 28, 28))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
                                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(requisicionComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(areaComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(requisicionTextField, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(unidadesTextField, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelPrincipalLayout.createSequentialGroup()
                                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -344,19 +396,9 @@ public class EntradaStockMenu extends javax.swing.JPanel {
                                             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(unidadesErrorLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addGap(0, 73, Short.MAX_VALUE)))
                                 .addGap(58, 58, 58)))
                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(minimoErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(facturaErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel24)
-                                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                        .addComponent(limpiarButton)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(guardarButton)))
-                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
                                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(minimoTextField, javax.swing.GroupLayout.Alignment.LEADING)
@@ -367,8 +409,22 @@ public class EntradaStockMenu extends javax.swing.JPanel {
                                             .addComponent(estadoErrorLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                .addGap(101, 101, 101))))))
+                                        .addGap(0, 29, Short.MAX_VALUE)))
+                                .addGap(101, 101, 101))
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(minimoErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(facturaErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel24))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(dummyText)
+                                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                        .addComponent(limpiarButton)
+                                        .addGap(32, 32, 32)
+                                        .addComponent(guardarButton)))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -382,8 +438,8 @@ public class EntradaStockMenu extends javax.swing.JPanel {
                             .addGroup(panelPrincipalLayout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(requisicionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(requisicionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)
                                 .addComponent(requisicionErrorLabel))
                             .addGroup(panelPrincipalLayout.createSequentialGroup()
                                 .addComponent(jLabel7)
@@ -434,50 +490,55 @@ public class EntradaStockMenu extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(nuevoCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(nombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(nombreErrorLabel)
-                        .addGap(40, 40, 40)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel23))
+                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(panelPrincipalLayout.createSequentialGroup()
+                            .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel24))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                    .addComponent(minimoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(minimoErrorLabel))
+                                .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                    .addComponent(areaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(areaErrorLabel))))
+                        .addGroup(panelPrincipalLayout.createSequentialGroup()
+                            .addComponent(jLabel20)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(marcaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(marcaErrorLabel)
+                            .addGap(6, 6, 6))))
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(medidaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel25)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(limpiarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(guardarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(37, 37, 37)
-                        .addComponent(volverButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelPrincipalLayout.createSequentialGroup()
-                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel24))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                        .addComponent(minimoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(minimoErrorLabel))
-                                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                        .addComponent(areaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(areaErrorLabel))))
-                            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                .addComponent(jLabel20)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(marcaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(marcaErrorLabel)
-                                .addGap(6, 6, 6)))
-                        .addContainerGap(320, Short.MAX_VALUE))))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(volverButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(dummyText)
+                        .addGap(26, 26, 26)
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(limpiarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(guardarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         scrollPanelPrincipal.setViewportView(panelPrincipal);
@@ -485,13 +546,254 @@ public class EntradaStockMenu extends javax.swing.JPanel {
         add(scrollPanelPrincipal, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    public void noOC_NP() {
+        //COMPROBADO, FUNCIONA CORRECTAMENTE
+        
+        Entrada ent = new Entrada();
+        Stock st = new Stock();
+
+        st.setIdStock(maxiNumSt);
+        st.setIdAreas(sbo.findIdArea(areaComboBox.getSelectedItem().toString()));
+        st.setCodigo(Integer.parseInt(codigoTextField.getText()));
+        st.setNombreArticulo(nombreTextField.getText());
+        st.setMarca(marcaTextField.getText());
+        st.setMinimo(Integer.parseInt(minimoTextField.getText()));
+        st.setPiezas(Integer.parseInt(unidadesTextField.getText()));
+        st.setMedida(medidaComboBox.getSelectedItem().toString());
+
+        String mensajeSt = "Stock:\n" + sbo.agregarStock(st);
+
+        ent.setIdEntrada(maxiNumEn);
+        ent.setIdCierre_Material(0);
+        ent.setIdStock(maxiNumSt);
+        ent.setEstado(estadoComboBox.getSelectedItem().toString());
+        //LocalDate fechaActual = LocalDate.now();
+        //ent.setFecha(formatoFecha.format(fechaActual));
+        ent.setUnidades(Integer.parseInt(unidadesTextField.getText()));
+
+        String mensajeEnt = "\nEntrada:\n" + ebo.agregarEntrada(ent);
+
+        dummyText.setText("PRODUCTO AGREGADO CON EXITO!");
+    }
+
+    public void noOC_AP() {
+        //MÉTODO COMPROBADO, FUNCIONA CORRECTAMENTE
+        
+        CiereMaterial cmat = new CiereMaterial();
+        Entrada ent = new Entrada();
+        Stock st = new Stock();
+
+        int numIdStock = sbo.findIdStock(Integer.parseInt(codigoTextField.getText()));
+
+        st.setIdStock(numIdStock);
+        st.setPiezas(Integer.parseInt(unidadesTextField.getText()));
+
+        String mensajeUpdate = "Add stock:\n" + sbo.actualizarStock(st);
+
+        ent.setIdEntrada(maxiNumEn);
+        ent.setIdCierre_Material(0);
+        ent.setIdStock(numIdStock);
+        ent.setEstado(estadoComboBox.getSelectedItem().toString());
+        //LocalDate fechaActual = LocalDate.now();
+        //ent.setFecha(formatoFecha.format(fechaActual));
+        ent.setUnidades(Integer.parseInt(unidadesTextField.getText()));
+
+        String mensajeEnt = "\nAdd entry:\n" + ebo.agregarEntrada(ent);
+
+        dummyText.setText("PRODUCTO AGREGADO CON EXITO!");
+    }
+
+    public void OC_NP_CiFound() {
+        //METODO COMPROBADO, FUNCIONA CORRECTAMENTE
+        
+        Entrada ent = new Entrada();
+        Stock st = new Stock();
+
+        st.setIdStock(maxiNumSt);
+        st.setIdAreas(sbo.findIdArea(areaComboBox.getSelectedItem().toString()));
+        st.setCodigo(Integer.parseInt(codigoTextField.getText()));
+        st.setNombreArticulo(nombreTextField.getText());
+        st.setMarca(marcaTextField.getText());
+        st.setMinimo(Integer.parseInt(minimoTextField.getText()));
+        st.setPiezas(Integer.parseInt(unidadesTextField.getText()));
+        st.setMedida(medidaComboBox.getSelectedItem().toString());
+
+        String mensajeSt = "Stock:\n" + sbo.agregarStock(st);
+
+        ent.setIdEntrada(maxiNumEn);
+        ent.setIdCierre_Material(cibo.findIdCierre(ordenTextField.getText()));
+        ent.setIdStock(maxiNumSt);
+        ent.setEstado(estadoComboBox.getSelectedItem().toString());
+        //LocalDate fechaActual = LocalDate.now();
+        //ent.setFecha(formatoFecha.format(fechaActual));
+        ent.setUnidades(Integer.parseInt(unidadesTextField.getText()));
+
+        String mensajeEnt = "\nEntrada:\n" + ebo.agregarEntrada(ent);
+
+        dummyText.setText(mensajeSt + mensajeEnt);
+    }
+
+    public void OC_NP_CiNotFound() {
+        //MÉTODO COMPROBADO, FUNCIONA CORRECTAMENTE
+        
+        CiereMaterial cmat = new CiereMaterial();
+        Entrada ent = new Entrada();
+        Stock st = new Stock();
+
+        cmat.setIdCierrematerial(maxiNumCi);
+        cmat.setIdRequisicion(sbo.findIdReq(Integer.parseInt(requisicionComboBox.getSelectedItem().toString())));
+        cmat.setOc(Integer.parseInt(ordenTextField.getText()));
+        cmat.setNumFac(Integer.parseInt(facturaTextField.getText()));
+        cmat.setFechaSolicitud(formatoFecha.format(solicitudDateChooser.getDate()));
+        cmat.setFechaEntrada(formatoFecha.format(entregaDateChooser.getDate()));
+        cmat.setNombre("NULO");
+        cmat.setObservacion(obervacionesTextPane.getText());
+
+        String mensajeCierre = "Add Cierre material:\n" + cibo.agregarCiereMaterial(cmat);
+
+        st.setIdStock(maxiNumSt);
+        st.setIdAreas(sbo.findIdArea(areaComboBox.getSelectedItem().toString()));
+        st.setCodigo(Integer.parseInt(codigoTextField.getText()));
+        st.setNombreArticulo(nombreTextField.getText());
+        st.setMarca(marcaTextField.getText());
+        st.setMinimo(Integer.parseInt(minimoTextField.getText()));
+        st.setPiezas(Integer.parseInt(unidadesTextField.getText()));
+        st.setMedida(medidaComboBox.getSelectedItem().toString());
+
+        String mensajeSt = "\nStock:\n" + sbo.agregarStock(st);
+
+        ent.setIdEntrada(maxiNumEn);
+        ent.setIdCierre_Material(maxiNumCi);
+        ent.setIdStock(maxiNumSt);
+        ent.setEstado(estadoComboBox.getSelectedItem().toString());
+        //LocalDate fechaActual = LocalDate.now();
+        //ent.setFecha(formatoFecha.format(fechaActual));
+        ent.setUnidades(Integer.parseInt(unidadesTextField.getText()));
+
+        String mensajeEnt = "\nEntrada:\n" + ebo.agregarEntrada(ent);
+
+        dummyText.setText("GUARDADO CORRECTAMENTE");
+    }
+
+    public void OC_AP_CIFound() {
+        //MÉTODO COMPROBADO, FUNCIONA CORRECTAMENTE
+        
+        Entrada ent = new Entrada();
+        Stock st = new Stock();
+
+        int numIdStock = sbo.findIdStock(Integer.parseInt(codigoTextField.getText()));
+
+        st.setIdStock(numIdStock);
+        st.setPiezas(Integer.parseInt(unidadesTextField.getText()));
+
+        String mensajeUpdate = "Add stock:\n" + sbo.actualizarStock(st);
+
+        ent.setIdEntrada(maxiNumEn);
+        ent.setIdCierre_Material(cibo.findIdCierre(ordenTextField.getText()));
+        ent.setIdStock(numIdStock);
+        ent.setEstado(estadoComboBox.getSelectedItem().toString());
+        //LocalDate fechaActual = LocalDate.now();
+        //ent.setFecha(formatoFecha.format(fechaActual));
+        ent.setUnidades(Integer.parseInt(unidadesTextField.getText()));
+
+        String mensajeEnt = "\nEntrada:\n" + ebo.agregarEntrada(ent);
+
+        dummyText.setText("GUARDADO CORRECTAMENTE!");
+    }
+
+    public void OC_AP_CINotFound() {
+        CiereMaterial cmat = new CiereMaterial();
+        Entrada ent = new Entrada();
+        Stock st = new Stock();
+
+        cmat.setIdCierrematerial(maxiNumCi);
+        cmat.setIdRequisicion(sbo.findIdReq(Integer.parseInt(requisicionComboBox.getSelectedItem().toString())));
+        cmat.setOc(Integer.parseInt(ordenTextField.getText()));
+        cmat.setNumFac(Integer.parseInt(facturaTextField.getText()));
+        cmat.setFechaSolicitud(formatoFecha.format(solicitudDateChooser.getDate()));
+        cmat.setFechaEntrada(formatoFecha.format(entregaDateChooser.getDate()));
+        cmat.setNombre("NULO");
+        cmat.setObservacion(obervacionesTextPane.getText());
+
+        String mensajeCierre = "Add Cierre material:" + cibo.agregarCiereMaterial(cmat);
+
+        int numIdStock = sbo.findIdStock(Integer.parseInt(codigoTextField.getText()));
+
+        st.setIdStock(numIdStock);
+        st.setPiezas(Integer.parseInt(unidadesTextField.getText()));
+
+        String mensajeUpdate = "Add stock:\n" + sbo.actualizarStock(st);
+
+        ent.setIdEntrada(maxiNumEn);
+        ent.setIdCierre_Material(maxiNumCi);
+        ent.setIdStock(numIdStock);
+        ent.setEstado(estadoComboBox.getSelectedItem().toString());
+        //LocalDate fechaActual = LocalDate.now();
+        //ent.setFecha(formatoFecha.format(fechaActual));
+        ent.setUnidades(Integer.parseInt(unidadesTextField.getText()));
+
+        String mensajeEnt = "\nEntrada:\n" + ebo.agregarEntrada(ent);
+        
+        dummyText.setText("GUARDADO CORRECTAMENTE!");
+        
+    }
+
     //<editor-fold defaultstate="collapsed" desc="Metodos Interfaz">
     private void guardarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarButtonMouseClicked
-        comprobarDatos();
+        boolean error = comprobarDatos();
+
+        if (error == true) {
+            if (ordenCheckBox.isSelected()) {
+                if (nuevoCheckBox.isSelected()) {
+                    //METER SIN ORDEN DE COMPRA, AGREGAR NUEVO PRODUCTO
+
+                    noOC_NP();
+                } else {
+                    //METER SIN ORDEN DE COMPRA, ACTUALIZAR PRODUCTO
+
+                    noOC_AP();
+                }
+            } else {
+                if (nuevoCheckBox.isSelected()) {
+                    //METER CON ORDEN DE COMPRA, AGREGAR MUEVO PRODUCTO
+
+                    if (cibo.encontrarRegCi(ordenTextField.getText())) {
+                        //SI YA HAY UN REGISTRO CON DE UN CIERRE DE MATERIAL CON LA ORDEN DE COMPRA, SE INGRESA
+                        //UN REGISTRO DE ENTRADA Y AGREGA EL STOCK
+
+                        OC_NP_CiFound();
+                    } else {
+                        //SI AÚN NO HAY UN REGISTRO DE CIERRE DE MATERIAL CON LA ORDEN DE COMPRA
+                        //CREA UN REGISTRO DE ORDEN DE COMPRA, UNA ENTRADA Y ACTUALIZA STOCK
+
+                        OC_NP_CiNotFound();
+                    }
+                } else {
+                    //METER CON ORDEN DE COMPRA, ACTUALIZAR PRODUCTO
+                    
+                    if (cibo.encontrarRegCi(ordenTextField.getText())) {
+                        //SI YA HAY UN REGISTRO DE CIERRE DE MATERIAL CON ESA ORDEN DE COMPRA, 
+                        //ACTUALIZA STOCK Y SE CREA UN NUEVO REGISTRO DE ENTRADA CON EL ID DEL CIERRE 
+
+                        OC_AP_CIFound();
+                    } else {
+                        //SI AÚN NO HAY UN REGISTRO DE CIERRE DE MATERIAL CON ESA ORDEN DE COMPRA, 
+                        //CREA UN REGISTRO CON LA ORDEN DE COMPRA, ACTUALIZA EL STOCK Y AGREGA UN NUEVO REGISTRO
+                        //DE ENTRADA
+
+                        OC_AP_CINotFound();
+                    }
+                }
+            }
+        }
+        
+        limpiar();
     }//GEN-LAST:event_guardarButtonMouseClicked
 
     private void limpiarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limpiarButtonMouseClicked
         limpiar();
+
+        bloquearNuevoProducto();
     }//GEN-LAST:event_limpiarButtonMouseClicked
 
     private void volverButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverButtonMouseClicked
@@ -500,11 +802,48 @@ public class EntradaStockMenu extends javax.swing.JPanel {
 
     private void ordenCheckBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ordenCheckBoxMouseClicked
         noOrden();
+
+        ordenErrorLabel.setText("");
+        requisicionErrorLabel.setText("");
+        facturaErrorLabel.setText("");
     }//GEN-LAST:event_ordenCheckBoxMouseClicked
 
     private void nuevoCheckBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nuevoCheckBoxMouseClicked
         nuevoProducto();
     }//GEN-LAST:event_nuevoCheckBoxMouseClicked
+
+    private void codigoTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codigoTextFieldFocusGained
+        nuevoCheckBox.setSelected(false);
+
+        bloquearNuevoProducto();
+        codigoTextField.setText("");
+        ordenTextField.setText("");
+        facturaTextField.setText("");
+        obervacionesTextPane.setText("");
+
+        ocultarErrores();
+    }//GEN-LAST:event_codigoTextFieldFocusGained
+
+    private void nombreTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreTextFieldFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreTextFieldFocusGained
+
+    private void codigoTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codigoTextFieldFocusLost
+        if (!codigoTextField.getText().equals("")) {
+            boolean found = sbo.encontrarRegistro(codigoTextField.getText());
+
+            if (!found) {
+                nuevoCheckBox.setSelected(true);
+
+                nuevoProducto();
+            }
+        }
+        
+    }//GEN-LAST:event_codigoTextFieldFocusLost
+
+    private void ordenTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ordenTextFieldFocusLost
+
+    }//GEN-LAST:event_ordenTextFieldFocusLost
 
     private void manualInit() {
         scrollPanelPrincipal.setVerticalScrollBar(new ScrollBarCustom());
@@ -518,7 +857,7 @@ public class EntradaStockMenu extends javax.swing.JPanel {
         cambiarFormatoFecha();
         ocultarErrores();
         noOrden();
-        nuevoProducto();
+        bloquearNuevoProducto();
     }
 
     private void ocultarErrores() {
@@ -539,7 +878,6 @@ public class EntradaStockMenu extends javax.swing.JPanel {
     private void limpiar() {
         codigoTextField.setText("");
         ordenTextField.setText("");
-        requisicionTextField.setText("");
         facturaTextField.setText("");
         solicitudDateChooser.setDate(date);
         entregaDateChooser.setDate(date);
@@ -556,40 +894,41 @@ public class EntradaStockMenu extends javax.swing.JPanel {
         if (ordenCheckBox.isSelected()) {
             ordenTextField.setEditable(false);
             ordenTextField.setBackground(new Color(153, 153, 153));
-            requisicionTextField.setEditable(false);
-            requisicionTextField.setBackground(new Color(153, 153, 153));
+            requisicionComboBox.setEnabled(false);
             facturaTextField.setEditable(false);
             facturaTextField.setBackground(new Color(153, 153, 153));
         } else {
             ordenTextField.setEditable(true);
             ordenTextField.setBackground(new Color(255, 255, 255));
-            requisicionTextField.setEditable(true);
-            requisicionTextField.setBackground(new Color(255, 255, 255));
+            requisicionComboBox.setEnabled(true);
+            requisicionComboBox.setEditable(true);
             facturaTextField.setEditable(true);
             facturaTextField.setBackground(new Color(255, 255, 255));
         }
     }
 
+    private void bloquearNuevoProducto() {
+        nombreTextField.setEditable(false);
+        nombreTextField.setBackground(new Color(153, 153, 153));
+        marcaTextField.setEditable(false);
+        marcaTextField.setBackground(new Color(153, 153, 153));
+        areaComboBox.setEnabled(false);
+        //areaComboBox.setBackground(new Color(153,153,153));
+        minimoTextField.setEditable(false);
+        minimoTextField.setBackground(new Color(153, 153, 153));
+        medidaComboBox.setEnabled(false);
+    }
+
     private void nuevoProducto() {
-        if (nuevoCheckBox.isSelected()) {
-            nombreTextField.setEditable(true);
-            nombreTextField.setBackground(new Color(255, 255, 255));
-            marcaTextField.setEditable(true);
-            marcaTextField.setBackground(new Color(255, 255, 255));
-            areaComboBox.setEnabled(true);
-            //areaComboBox.setBackground(new Color(255,255,255));
-            minimoTextField.setEditable(true);
-            minimoTextField.setBackground(new Color(255, 255, 255));
-        } else {
-            nombreTextField.setEditable(false);
-            nombreTextField.setBackground(new Color(153, 153, 153));
-            marcaTextField.setEditable(false);
-            marcaTextField.setBackground(new Color(153, 153, 153));
-            areaComboBox.setEnabled(false);
-            //areaComboBox.setBackground(new Color(153,153,153));
-            minimoTextField.setEditable(false);
-            minimoTextField.setBackground(new Color(153, 153, 153));
-        }
+        nombreTextField.setEditable(true);
+        nombreTextField.setBackground(new Color(255, 255, 255));
+        marcaTextField.setEditable(true);
+        marcaTextField.setBackground(new Color(255, 255, 255));
+        areaComboBox.setEnabled(true);
+        //areaComboBox.setBackground(new Color(255,255,255));
+        minimoTextField.setEditable(true);
+        minimoTextField.setBackground(new Color(255, 255, 255));
+        medidaComboBox.setEnabled(true);
     }
     //</editor-fold>
 
@@ -598,7 +937,7 @@ public class EntradaStockMenu extends javax.swing.JPanel {
         // EL STRING QUE RECIBE ESTE METODO ES EL FORMATO EN EL QUE SE MUESTRA LA FECHA DE HAY EN EL DISPLAY DE FECHA
         // ESTE FORMATO OBEDECE EL FORMATO DE CUALQUEIR DATEFORMAT, ASI QUE SI SE DESEA CAMBIAR PARA ADAPTARLO PARA EL 
         // FORMATO QUE ACCEPTE LA BASE DE DATOS SE DEBERA CONSIDERAR ESE FORMATO
-        formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+        formatoFecha = new SimpleDateFormat("MM-dd-yyyy");
         solicitudDateChooser.setDateFormatString("dd-MM-yyyy");
         entregaDateChooser.setDateFormatString("dd-MM-yyyy");
     }
@@ -620,19 +959,11 @@ public class EntradaStockMenu extends javax.swing.JPanel {
         }
 
         //Solo combrobara los siguientes campos si la orden de compra esta seleccionada
-        if (ordenCheckBox.isSelected()) {
+        if (!ordenCheckBox.isSelected()) {
 
             //Comprobar que orden de compra no este vacio (ACEPTA NUMEROS Y LETRAS)
             if (ordenTextField.getText().isBlank() || ordenTextField.getText().isEmpty()) {
                 ordenErrorLabel.setText("ERROR");
-                error = true;
-            }
-
-            //Comprobar que el texto escrito numero de requisicion sean solo numeros
-            try {
-                Integer.valueOf(requisicionTextField.getText());
-            } catch (Exception e) {
-                requisicionErrorLabel.setText("Error");
                 error = true;
             }
 
@@ -673,11 +1004,10 @@ public class EntradaStockMenu extends javax.swing.JPanel {
 
         //COMPROBAR QUE EL ELEMENTO SELECCIONADO EN ESTADO COMBOBOX NO SEA EL PRIMER ELEMENTO
         //ESTO ESTA TOMANDO EN CUENTA QUE SIEMPRE EL PRIMER ELEMENTO DEL COMBOBOX ESTARA VACIA
-        if (estadoComboBox.getSelectedIndex() == 0) {
+        /*if (estadoComboBox.getSelectedIndex() == 0) {
             estadoErrorLabel.setText("Error");
             error = true;
-        }
-
+        }*/
         //Solo comprobara los siguientes campos si la opcion de nuevo producto esta marcada
         if (nuevoCheckBox.isSelected()) {
 
@@ -695,10 +1025,10 @@ public class EntradaStockMenu extends javax.swing.JPanel {
 
             //COMPROBAR QUE EL ELEMENTO SELECCIONADO EN AREA COMBOBOX NO SEA EL PRIMER ELEMENTO
             //ESTO ESTA TOMANDO EN CUENTA QUE SIEMPRE EL PRIMER ELEMENTO DEL COMBOBOX ESTARA VACIA
-            if (areaComboBox.getSelectedIndex() == 0) {
+            /*if (areaComboBox.getSelectedIndex() == 0) {
                 areaErrorLabel.setText("Error");
                 error = true;
-            }
+            }*/
 
             //Comprobar que el texto escrito en minimo de producto sean solo numeros
             try {
@@ -708,12 +1038,12 @@ public class EntradaStockMenu extends javax.swing.JPanel {
                 error = true;
             }
         }
-        
+
         //SI HUBO ALGUN ERROR REGRESA FALSE
-        if(error){
+        if (error) {
             return false;
         }
-        
+
         //SI NO HUBO NINGUN ERROR REGRESA TRUE
         ocultarErrores();
         return true;
@@ -726,6 +1056,7 @@ public class EntradaStockMenu extends javax.swing.JPanel {
     private javax.swing.JLabel areaErrorLabel;
     private javax.swing.JLabel codigoErrorLabel;
     private javax.swing.JTextField codigoTextField;
+    private javax.swing.JLabel dummyText;
     private com.toedter.calendar.JDateChooser entregaDateChooser;
     private javax.swing.JLabel entregaErrorLabel;
     private javax.swing.JComboBox<String> estadoComboBox;
@@ -740,6 +1071,7 @@ public class EntradaStockMenu extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel4;
@@ -750,6 +1082,7 @@ public class EntradaStockMenu extends javax.swing.JPanel {
     private javax.swing.JButton limpiarButton;
     private javax.swing.JLabel marcaErrorLabel;
     private javax.swing.JTextField marcaTextField;
+    private javax.swing.JComboBox<String> medidaComboBox;
     private javax.swing.JLabel minimoErrorLabel;
     private javax.swing.JTextField minimoTextField;
     private javax.swing.JLabel nombreErrorLabel;
@@ -760,8 +1093,8 @@ public class EntradaStockMenu extends javax.swing.JPanel {
     private javax.swing.JLabel ordenErrorLabel;
     private javax.swing.JTextField ordenTextField;
     private javax.swing.JPanel panelPrincipal;
+    private javax.swing.JComboBox<String> requisicionComboBox;
     private javax.swing.JLabel requisicionErrorLabel;
-    private javax.swing.JTextField requisicionTextField;
     private javax.swing.JScrollPane scrollPanelPrincipal;
     private com.toedter.calendar.JDateChooser solicitudDateChooser;
     private javax.swing.JLabel solicitudErrorLabel;
