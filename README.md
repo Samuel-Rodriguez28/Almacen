@@ -65,8 +65,19 @@ Se agrego la ventana de cotizacion
 ![image](https://github.com/Samuel-Rodriguez28/Almacen/assets/121456096/6da8823a-5268-4bc6-8807-0833381d02c3)
 
 
+# Se agregaron funciones para visualizar los registros en las tablas
 
 
+![Captura_Stock](https://github.com/Samuel-Rodriguez28/Almacen/assets/123322127/733dbd64-fe0f-4496-abf9-5bf9b849d3d4)
+![Captura_Salida](https://github.com/Samuel-Rodriguez28/Almacen/assets/123322127/79ef076f-3a76-477b-9362-a40944576c6a)
+![Captura_Entrada](https://github.com/Samuel-Rodriguez28/Almacen/assets/123322127/7ff03672-1189-4232-8f75-494df30f28e7)
+
+# 28/Agosto/2023
+Se agregaron los metodos correspondientes para ingresas nuevos productos en en el stock, actualizar la tabla de entradas y la entrada de cierre de material
+
+![CapturaTablaStock](https://github.com/Samuel-Rodriguez28/Almacen/assets/123322127/4b85c49f-858a-400d-a31f-41bc37e10b74)
+![Captura_TablaEntrada](https://github.com/Samuel-Rodriguez28/Almacen/assets/123322127/747290b6-5d48-4f1c-8cb4-b5bc543b3513)
+![CapturaAgregarProductos](https://github.com/Samuel-Rodriguez28/Almacen/assets/123322127/f0c4ad1b-def1-4fac-9a3d-e35de452833b)
 
 
 
