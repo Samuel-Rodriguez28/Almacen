@@ -66,6 +66,7 @@
                                           <Component id="piezasTextField" alignment="0" max="32767" attributes="0"/>
                                           <Component id="codigoErrorLabel" alignment="0" max="32767" attributes="0"/>
                                           <Component id="piezasErrorLabel" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="codigoErrorNotFound" alignment="1" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="261" max="-2" attributes="0"/>
                                   </Group>
@@ -84,9 +85,12 @@
                                           <Component id="dateChooser" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="observacionesTextPane" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="243" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="observacionesTextPane" min="-2" pref="303" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -99,6 +103,11 @@
                               <EmptySpace min="-2" pref="233" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="425" max="-2" attributes="0"/>
+                      <Component id="pzasErrorLabel" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -116,7 +125,9 @@
                               <Component id="codigoTextField" min="-2" pref="35" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="codigoErrorLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                              <Component id="codigoErrorNotFound" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jLabel1" min="-2" pref="35" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="destinoComboBox" min="-2" pref="35" max="-2" attributes="0"/>
@@ -132,26 +143,25 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="piezasTextField" min="-2" pref="35" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="fechaErrorLabel" min="-2" max="-2" attributes="0"/>
                                   <Component id="piezasErrorLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="162" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="limpiarButton" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                  <Component id="guardarButton" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                  <Component id="volverButton" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="dateChooser" min="-2" pref="35" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="dateChooser" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace pref="74" max="32767" attributes="0"/>
+                      <Component id="pzasErrorLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="limpiarButton" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="guardarButton" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="volverButton" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -174,6 +184,10 @@
                   <Font name="Corbel" size="18" style="1"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="codigoTextFieldFocusGained"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="codigoTextFieldFocusLost"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
@@ -189,12 +203,7 @@
             <Component class="javax.swing.JComboBox" name="destinoComboBox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value=""/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
               <AuxValues>
@@ -335,6 +344,28 @@
               </Properties>
             </Component>
             <Component class="com.toedter.calendar.JDateChooser" name="dateChooser">
+            </Component>
+            <Component class="javax.swing.JLabel" name="codigoErrorNotFound">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Corbel" size="12" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="ERROR: PRODUCTO NO ENCONTRADO"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="pzasErrorLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Corbel" size="12" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="ERROR: NO HAY SUFICIENTES PIZAS, CONSIDERE REDUCIR EL NUMERO"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>

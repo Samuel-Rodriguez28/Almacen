@@ -241,5 +241,19 @@ public class StockBO {
         return id;
     }
     
-    
+    //MÉTODO PARA ENCONTRAR LAS PIEZAS DE UN PRODUCTO CON X ID
+    public int findPzStock(int id){
+        Connection conn = Conexion.getConnection();
+        
+        int pzas = sdao.findPzStock(conn, id);
+        
+        try {
+            conn.close();
+        } catch (Exception e) 
+        {
+            System.out.print(e.getMessage());
+        }
+        
+        return pzas;
+    }
 }

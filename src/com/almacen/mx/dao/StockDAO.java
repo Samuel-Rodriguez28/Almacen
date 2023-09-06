@@ -320,4 +320,29 @@ public class StockDAO {
         
         return id;
     }
+    
+    //MÉTODO PARA ENCONTRAR LA CANTIDAD DE PIEZAS DE UN PRODUCTO
+    public int findPzStock(Connection conn, int id){
+        int pzas = 0;
+        
+        String query = "SELECT PZAS FROM STOCK WHERE idSTOCK = " + id;
+        
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            
+            if(rs.next()){
+                pzas = rs.getInt("PZAS");
+            }
+            
+            stmt.close();
+            rs.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "METODO FIND IDSTOCK\nNo se pido encontrar el ID con ese codigo\n" + e.getMessage());
+        }
+        
+        return pzas;
+    }
+    
+    
 }

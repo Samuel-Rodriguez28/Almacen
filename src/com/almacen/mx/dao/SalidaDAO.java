@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -33,12 +34,13 @@ public class SalidaDAO {
         try {
             pst = con.prepareStatement(sql);
             pst.setInt(1, sal.getIdSalida());
-            pst.setInt(2, sal.getIdStock());
-            pst.setInt(3, sal.getPiezas());
-            pst.setString(4, sal.getPersonal());
-            pst.setString(5, sal.getObservacion());
-            pst.setString(6, sal.getFecha());
-            mensaje = "guardado correctamente";
+            pst.setInt(2, sal.getIdDestino());
+            pst.setInt(3, sal.getIdStock());
+            pst.setInt(4, sal.getPiezas());
+            pst.setString(5, sal.getPersonal());
+            pst.setString(6, sal.getObservacion());
+            pst.setString(7, sal.getFecha());
+            mensaje = "GUARDADO CORRECTAMENTE!";
             pst.execute();
             pst.close();
         } catch (SQLException e) 
@@ -129,5 +131,73 @@ public class SalidaDAO {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
+    }
+    
+    //MÉTODO PARA TOMAR EL ULTIMO VALOR REGISTRADO EN LA BD
+    public int idMaxSalida(Connection conn){
+        int idMax = 0;
+        
+        String query = "SELECT MAX(IDSALIDA) FROM SALIDA";
+        
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            
+            if(rs.next()){
+                idMax = Integer.parseInt(rs.getString(1)) + 1;
+            }
+            
+            stmt.close();
+            rs.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se encotro el máximo numero en Stock\n" + e.getMessage());
+        }
+        
+        return idMax;
+    }
+    
+    //MÉTODO PARA LLENAR EL COMBOBOX CON LOS DESTINOS REGISTRADOS
+    public void fillDestino(Connection conn, JComboBox comIdCol){
+        String enc = "SELECT NOMBRE FROM DESTINO";
+        
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(enc);
+            
+            String nombre = "";
+            
+            while (rs.next()) {
+                String item = rs.getString("NOMBRE");
+                comIdCol.addItem(item);
+            }
+            
+            stmt.close();
+            rs.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "NO SE PUDIERON LISTAR LOS NOMBRES DE LAS AREAS\n" + e.getMessage());
+        }
+    }
+    
+    //MÉTODO PARA ENCONTRAR EL ID DE CIERTO DESTINO
+    public int findIdDestino(Connection conn, String nombre){
+        int idDestino = 0;
+        
+        String query = "SELECT IDDESTINO FROM DESTINO WHERE NOMBRE = '" + nombre + "'";
+        
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            
+            if(rs.next()){
+                idDestino = Integer.parseInt(rs.getString(1));
+            }
+            
+            stmt.close();
+            rs.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se encotro el Id del Destino con ese nombre\n" + e.getMessage());
+        }
+        
+        return idDestino;
     }
 }

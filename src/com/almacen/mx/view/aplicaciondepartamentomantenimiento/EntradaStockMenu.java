@@ -786,8 +786,6 @@ public class EntradaStockMenu extends javax.swing.JPanel {
                 }
             }
         }
-        
-        limpiar();
     }//GEN-LAST:event_guardarButtonMouseClicked
 
     private void limpiarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limpiarButtonMouseClicked

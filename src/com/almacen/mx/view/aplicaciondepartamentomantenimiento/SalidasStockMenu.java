@@ -5,24 +5,35 @@
 package com.almacen.mx.view.aplicaciondepartamentomantenimiento;
 
 import aplicaciondepartamentomantenimiento.customUI.ScrollBarCustom;
+import com.almacen.mx.bo.SalidaBO;
+import com.almacen.mx.bo.StockBO;
+import com.almacen.mx.entity.Salida;
+import com.almacen.mx.entity.Stock;
 import static com.almacen.mx.view.aplicaciondepartamentomantenimiento.StockMenu.ventanas;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author acost
  */
 public class SalidasStockMenu extends javax.swing.JPanel {
-
+    SalidaBO sabo = new SalidaBO();
+    StockBO sbo = new StockBO();
+    int maxId = sabo.getLastId();
+    boolean found = false;
     /**
      * Creates new form SalidasStockMenu
      */
     public SalidasStockMenu() {
         initComponents();
         manaulInit();
+        codigoErrorNotFound.setVisible(false);
+        sabo.fillDestino(destinoComboBox);
+        pzasErrorLabel.setVisible(false);
     }
 
     /**
@@ -54,6 +65,8 @@ public class SalidasStockMenu extends javax.swing.JPanel {
         piezasErrorLabel = new javax.swing.JLabel();
         fechaErrorLabel = new javax.swing.JLabel();
         dateChooser = new com.toedter.calendar.JDateChooser();
+        codigoErrorNotFound = new javax.swing.JLabel();
+        pzasErrorLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(44, 60, 67));
         setLayout(new java.awt.BorderLayout());
@@ -69,12 +82,18 @@ public class SalidasStockMenu extends javax.swing.JPanel {
         jLabel1.setText("DESTINO");
 
         codigoTextField.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        codigoTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                codigoTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                codigoTextFieldFocusLost(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("CODIGO PRODUCTO");
-
-        destinoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Item 2", "Item 3", "Item 4" }));
 
         jLabel3.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -133,6 +152,14 @@ public class SalidasStockMenu extends javax.swing.JPanel {
         fechaErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
         fechaErrorLabel.setText("ERROR");
 
+        codigoErrorNotFound.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
+        codigoErrorNotFound.setForeground(new java.awt.Color(255, 0, 0));
+        codigoErrorNotFound.setText("ERROR: PRODUCTO NO ENCONTRADO");
+
+        pzasErrorLabel.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
+        pzasErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        pzasErrorLabel.setText("ERROR: NO HAY SUFICIENTES PIZAS, CONSIDERE REDUCIR EL NUMERO");
+
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
         panelPrincipalLayout.setHorizontalGroup(
@@ -151,7 +178,8 @@ public class SalidasStockMenu extends javax.swing.JPanel {
                                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(piezasTextField, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(codigoErrorLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(piezasErrorLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(piezasErrorLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(codigoErrorNotFound, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(261, 261, 261))
                             .addGroup(panelPrincipalLayout.createSequentialGroup()
                                 .addComponent(destinoErrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -164,9 +192,11 @@ public class SalidasStockMenu extends javax.swing.JPanel {
                                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(dateChooser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(observacionesTextPane, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(243, 243, 243))))
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(243, 243, 243))
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addComponent(observacionesTextPane, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addComponent(volverButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -174,6 +204,10 @@ public class SalidasStockMenu extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(guardarButton)
                         .addGap(233, 233, 233))))
+            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                .addGap(425, 425, 425)
+                .addComponent(pzasErrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,7 +222,9 @@ public class SalidasStockMenu extends javax.swing.JPanel {
                         .addComponent(codigoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(codigoErrorLabel)
-                        .addGap(38, 38, 38)
+                        .addGap(5, 5, 5)
+                        .addComponent(codigoErrorNotFound)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(destinoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -206,16 +242,16 @@ public class SalidasStockMenu extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(fechaErrorLabel)
-                            .addComponent(piezasErrorLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
-                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(limpiarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(guardarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(volverButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(45, 45, 45))
-                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(piezasErrorLabel)))
+                    .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addComponent(pzasErrorLabel)
+                .addGap(72, 72, 72)
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(limpiarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(guardarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(volverButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45))
         );
 
         scrollPanePrincipal.setViewportView(panelPrincipal);
@@ -231,11 +267,77 @@ public class SalidasStockMenu extends javax.swing.JPanel {
 
     private void guardarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarButtonMouseClicked
         comprobarDatos();
+        
+        if(true){
+            int idStock = sbo.findIdStock(Integer.parseInt(codigoTextField.getText()));
+            
+            int pzas = sbo.findPzStock(idStock);
+            
+            if(Integer.parseInt(piezasTextField.getText()) > pzas){
+                pzasErrorLabel.setVisible(true);
+            }else{
+                Salida sal = new Salida();
+                
+                sal.setIdSalida(maxId);
+                sal.setIdStock(idStock);
+                sal.setIdDestino(sabo.getDestinoId(destinoComboBox.getSelectedItem().toString()));
+                sal.setPiezas(Integer.parseInt(piezasTextField.getText()));
+                sal.setFecha(formatoFecha.format(dateChooser.getDate()));
+                sal.setObservacion(jTextPane1.getText());
+                //ESTA OPCION DE NULO SE CAMBIARÁ UNA VEZ QUE SE TENGA UNA PANTALLA DE LOGIN
+                sal.setPersonal("NULO");
+                
+                String mensaje = sabo.agregarSalida(sal);
+                
+                Stock st = new Stock();
+                
+                st.setIdStock(idStock);
+                st.setPiezas(- Integer.parseInt(piezasTextField.getText()));
+                
+                String mensajeSt = "\nMensaje Update:" + sbo.actualizarStock(st);
+                
+                JOptionPane.showMessageDialog(null, mensaje + mensajeSt);
+            }
+        }
     }//GEN-LAST:event_guardarButtonMouseClicked
 
     private void limpiarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limpiarButtonMouseClicked
         limpiar();
+        
+        codigoErrorNotFound.setVisible(false);
+        pzasErrorLabel.setVisible(false);
+        destinoComboBox.setEnabled(true);
+        piezasTextField.setEnabled(true);
+        observacionesTextPane.setEnabled(true);
+        dateChooser.setEnabled(true);
+        guardarButton.setEnabled(true);
+        
     }//GEN-LAST:event_limpiarButtonMouseClicked
+
+    private void codigoTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codigoTextFieldFocusLost
+        found = sbo.encontrarRegistro(codigoTextField.getText());
+        
+        if(found == false){
+            codigoErrorNotFound.setVisible(true);
+            
+            destinoComboBox.setEnabled(false);
+            piezasTextField.setEnabled(false);
+            observacionesTextPane.setEnabled(false);
+            dateChooser.setEnabled(false);
+            guardarButton.setEnabled(false);
+        }
+    }//GEN-LAST:event_codigoTextFieldFocusLost
+
+    private void codigoTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codigoTextFieldFocusGained
+        codigoErrorNotFound.setVisible(false);
+        pzasErrorLabel.setVisible(false);
+            
+        destinoComboBox.setEnabled(true);
+        piezasTextField.setEnabled(true);
+        observacionesTextPane.setEnabled(true);
+        dateChooser.setEnabled(true);
+        guardarButton.setEnabled(true);
+    }//GEN-LAST:event_codigoTextFieldFocusGained
     
     private void manaulInit(){
         scrollPanePrincipal.setVerticalScrollBar(new ScrollBarCustom());
@@ -271,7 +373,7 @@ public class SalidasStockMenu extends javax.swing.JPanel {
         // EL STRING QUE RECIBE ESTE METODO ES EL FORMATO EN EL QUE SE MUESTRA LA FECHA DE HAY EN EL DISPLAY DE FECHA
         // ESTE FORMATO OBEDECE EL FORMATO DE CUALQUEIR DATEFORMAT, ASI QUE SI SE DESEA CAMBIAR PARA ADAPTARLO PARA EL 
         // FORMATO QUE ACCEPTE LA BASE DE DATOS SE DEBERA CONSIDERAR ESE FORMATO
-        formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+        formatoFecha = new SimpleDateFormat("MM-dd-yyyy");
         dateChooser.setDateFormatString("dd-MM-yyyy");
     }
     
@@ -290,15 +392,6 @@ public class SalidasStockMenu extends javax.swing.JPanel {
         }catch(NumberFormatException e){
             codigoErrorLabel.setText("Error");   
             error = true;
-        }
-        
-        //COMPROBAR QUE EL ELEMENTO SELECCIONADO EN DESTINO COMBOBOX NO SEA EL PRIMER ELEMENTO
-        //ESTO ESTA TOMANDO EN CUENTA QUE SIEMPRE EL PRIMER ELEMENTO DEL COMBOBOX ESTARA VACIA
-        if(destinoComboBox.getSelectedIndex() == 0){
-            destinoErrorLabel.setText("Error");
-            error = true;
-        } else{
-            destinoErrorLabel.setText("");
         }
         
         //COMPROBAR QUE EL TEXTO ESCRITO EN PIEZAS TEXTFIELD SEAN SOLO NUMEROS
@@ -334,6 +427,7 @@ public class SalidasStockMenu extends javax.swing.JPanel {
     //<editor-fold defaultstate="collapsed" desc="Variables">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel codigoErrorLabel;
+    private javax.swing.JLabel codigoErrorNotFound;
     private javax.swing.JTextField codigoTextField;
     private com.toedter.calendar.JDateChooser dateChooser;
     private javax.swing.JComboBox<String> destinoComboBox;
@@ -351,6 +445,7 @@ public class SalidasStockMenu extends javax.swing.JPanel {
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JLabel piezasErrorLabel;
     private javax.swing.JTextField piezasTextField;
+    private javax.swing.JLabel pzasErrorLabel;
     private javax.swing.JScrollPane scrollPanePrincipal;
     private javax.swing.JButton volverButton;
     // End of variables declaration//GEN-END:variables
