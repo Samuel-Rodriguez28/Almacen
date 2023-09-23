@@ -60,15 +60,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         salidaMboton = new javax.swing.JLabel();
         stockBoton = new javax.swing.JLabel();
         cotizacionBoton = new javax.swing.JLabel();
-        seguimientoBoton = new javax.swing.JLabel();
-        cierreMBoton = new javax.swing.JLabel();
-        articulosBoton = new javax.swing.JLabel();
+        requisicionBoton = new javax.swing.JLabel();
+        areasBoton = new javax.swing.JLabel();
+        destinoBoton = new javax.swing.JLabel();
         ordenBoton = new javax.swing.JLabel();
         label1 = new javax.swing.JLabel();
         label2 = new javax.swing.JLabel();
         label3 = new javax.swing.JLabel();
         label6 = new javax.swing.JLabel();
         label4 = new javax.swing.JLabel();
+        label5 = new javax.swing.JLabel();
+        label7 = new javax.swing.JLabel();
         panelContenedor = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         dragComponent = new javax.swing.JPanel();
@@ -279,24 +281,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panelMenus.add(cotizacionBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 670, 140, 140));
         cotizacionBoton.getAccessibleContext().setAccessibleName("cotizacion");
 
-        seguimientoBoton.setBackground(new java.awt.Color(102, 153, 0));
-        seguimientoBoton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        seguimientoBoton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        seguimientoBoton.setPreferredSize(new java.awt.Dimension(140, 140));
-        panelMenus.add(seguimientoBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 890, 140, 140));
-        seguimientoBoton.getAccessibleContext().setAccessibleName("seguimiento");
+        requisicionBoton.setBackground(new java.awt.Color(102, 153, 0));
+        requisicionBoton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        requisicionBoton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        requisicionBoton.setPreferredSize(new java.awt.Dimension(140, 140));
+        panelMenus.add(requisicionBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 890, 140, 140));
+        requisicionBoton.getAccessibleContext().setAccessibleName("seguimiento");
 
-        cierreMBoton.setBackground(new java.awt.Color(102, 153, 0));
-        cierreMBoton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        cierreMBoton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        cierreMBoton.setPreferredSize(new java.awt.Dimension(140, 140));
-        panelMenus.add(cierreMBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 1110, 140, 140));
+        areasBoton.setBackground(new java.awt.Color(102, 153, 0));
+        areasBoton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        areasBoton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        areasBoton.setPreferredSize(new java.awt.Dimension(140, 140));
+        panelMenus.add(areasBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 1110, 140, 140));
 
-        articulosBoton.setBackground(new java.awt.Color(102, 153, 0));
-        articulosBoton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        articulosBoton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        articulosBoton.setPreferredSize(new java.awt.Dimension(140, 140));
-        panelMenus.add(articulosBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 1330, 140, 140));
+        destinoBoton.setBackground(new java.awt.Color(102, 153, 0));
+        destinoBoton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        destinoBoton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        destinoBoton.setPreferredSize(new java.awt.Dimension(140, 140));
+        panelMenus.add(destinoBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 1330, 140, 140));
 
         ordenBoton.setBackground(new java.awt.Color(102, 153, 0));
         ordenBoton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -330,9 +332,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         label4.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
         label4.setForeground(new java.awt.Color(44, 60, 67));
-        label4.setText("<html><center>Seguimiento");
+        label4.setText("<html><center>Requisiciones");
         label4.setPreferredSize(new java.awt.Dimension(180, 30));
         panelMenus.add(label4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1030, 180, -1));
+
+        label5.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
+        label5.setForeground(new java.awt.Color(44, 60, 67));
+        label5.setText("<html><center>Area");
+        label5.setPreferredSize(new java.awt.Dimension(180, 30));
+        panelMenus.add(label5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1250, 180, -1));
+
+        label7.setFont(new java.awt.Font("Corbel", 0, 24)); // NOI18N
+        label7.setForeground(new java.awt.Color(44, 60, 67));
+        label7.setText("<html><center>Destino");
+        label7.setPreferredSize(new java.awt.Dimension(180, 30));
+        panelMenus.add(label7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1470, 180, -1));
 
         scrollPanelMenu.setViewportView(panelMenus);
 
@@ -477,9 +491,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ponerImagen(salidaMboton, "src/com/almacen/mx/view/recursos/salidaMlogo.png");
         ponerImagen(stockBoton, "src/com/almacen/mx/view/recursos/stocklogo.png");
         ponerImagen(cotizacionBoton, "src/com/almacen/mx/view/recursos/cotizacionlogo.png");
-        ponerImagen(seguimientoBoton, "src/com/almacen/mx/view/recursos/seguimientologo.png");
-        ponerImagen(cierreMBoton, "src/com/almacen/mx/view/recursos/cierrelogo.png");
-        ponerImagen(articulosBoton, "src/com/almacen/mx/view/recursos/articuloslogo.png");
+        ponerImagen(requisicionBoton, "src/com/almacen/mx/view/recursos/seguimientologo.png");
+        ponerImagen(areasBoton, "src/com/almacen/mx/view/recursos/cierrelogo.png");
+        ponerImagen(destinoBoton, "src/com/almacen/mx/view/recursos/articuloslogo.png");
         ponerImagen(ordenBoton, "src/com/almacen/mx/view/recursos/ordenlogo.png");
 
         maBotonesMenu = new MouseAdapter() {
@@ -513,9 +527,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     labelMenuActual.setText("Cotizacion");
                     return;
                 }
-                if (e.equals(seguimientoBoton)) {
+                if (e.equals(requisicionBoton)) {
                     panelContenedor.setSelectedIndex(5);
-                    labelMenuActual.setText("Seguimiento");
+                    labelMenuActual.setText("Requisicion");
+                    return;
+                }
+                if (e.equals(areasBoton)) {
+                    panelContenedor.setSelectedIndex(6);
+                    labelMenuActual.setText("Area");
+                    return;
+                }
+                if (e.equals(destinoBoton)) {
+                    panelContenedor.setSelectedIndex(7);
+                    labelMenuActual.setText("Destino");
                     return;
                 }
             }
@@ -525,7 +549,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         salidaMboton.addMouseListener(maBotonesMenu);
         stockBoton.addMouseListener(maBotonesMenu);
         cotizacionBoton.addMouseListener(maBotonesMenu);
-        seguimientoBoton.addMouseListener(maBotonesMenu);
+        requisicionBoton.addMouseListener(maBotonesMenu);
+        areasBoton.addMouseListener(maBotonesMenu);
+        destinoBoton.addMouseListener(maBotonesMenu);
 
         scrollPanelMenu.setVerticalScrollBar(new ScrollBarCustom());
         scrollPanelMenu.getVerticalScrollBar().setUnitIncrement(30);
@@ -538,7 +564,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panelContenedor.add(sm);
         panelContenedor.add(stm);
         panelContenedor.add(cm);
-        panelContenedor.add(sgm);
+        panelContenedor.add(rm);
+        panelContenedor.add(am);
+        panelContenedor.add(dm);
 
         panelContenedor.setSelectedIndex(0);
                 
@@ -634,14 +662,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     //<editor-fold defaultstate="collapsed" desc="Variables">
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel articulosBoton;
+    private javax.swing.JLabel areasBoton;
     private javax.swing.JPanel barraSuperior;
     private javax.swing.JLabel botonCerrar;
     private javax.swing.JLabel botonMaximizar;
     private javax.swing.JLabel botonMinimizar;
     private javax.swing.JPanel botones;
-    private javax.swing.JLabel cierreMBoton;
     private javax.swing.JLabel cotizacionBoton;
+    private javax.swing.JLabel destinoBoton;
     private javax.swing.JPanel dragComponent;
     private javax.swing.JLabel entradaMBoton;
     private javax.swing.JLabel jLabel1;
@@ -651,16 +679,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel label2;
     private javax.swing.JLabel label3;
     private javax.swing.JLabel label4;
+    private javax.swing.JLabel label5;
     private javax.swing.JLabel label6;
+    private javax.swing.JLabel label7;
     private javax.swing.JLabel labelFecha;
     private javax.swing.JLabel labelMenuActual;
     private javax.swing.JLabel ordenBoton;
     private javax.swing.JTabbedPane panelContenedor;
     private javax.swing.JPanel panelMenus;
     private javax.swing.JPanel panelPrincipal;
+    private javax.swing.JLabel requisicionBoton;
     private javax.swing.JLabel salidaMboton;
     private javax.swing.JScrollPane scrollPanelMenu;
-    private javax.swing.JLabel seguimientoBoton;
     private javax.swing.JLabel stockBoton;
     private javax.swing.JPanel texto;
     // End of variables declaration//GEN-END:variables
@@ -673,12 +703,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
     DefaultTableModel modeloTablaSalida;
     DefaultTableModel modeloTablaStock;
-    JLabel[] botonesMenu = {entradaMBoton, salidaMboton, stockBoton, cotizacionBoton, seguimientoBoton};
+    JLabel[] botonesMenu = {entradaMBoton, salidaMboton, stockBoton, cotizacionBoton, requisicionBoton};
     EntradasMenu em = new EntradasMenu();
     SalidasMenu sm = new SalidasMenu();
     StockMenu stm = new StockMenu();
-    CotizacionMenu cm = new CotizacionMenu();
-    SeguimientoMenu sgm = new SeguimientoMenu();
+    CotizacionFormularioMenu cm = new CotizacionFormularioMenu();
+    RequisicionesMenu rm = new RequisicionesMenu();
+    AreasMenu am = new AreasMenu();
+    DestinoMenu dm = new DestinoMenu();
     BienvenidaMenu bm = new BienvenidaMenu();
     private static boolean isResizing = false;
     private static int lastX = 0;

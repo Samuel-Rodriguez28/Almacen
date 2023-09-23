@@ -4,7 +4,6 @@
  */
 package com.almacen.mx.view.aplicaciondepartamentomantenimiento;
 
-import static com.almacen.mx.view.aplicaciondepartamentomantenimiento.StockMenu.ventanas;
 import java.awt.Insets;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
 
@@ -12,12 +11,12 @@ import javax.swing.plaf.basic.BasicTabbedPaneUI;
  *
  * @author acost
  */
-public class CotizacionMenu extends javax.swing.JPanel {
+public class AreasMenu extends javax.swing.JPanel {
 
     /**
-     * Creates new form CotizacionMenu
+     * Creates new form AreasMenu
      */
-    public CotizacionMenu() {
+    public AreasMenu() {
         initComponents();
         manualInitComponents();
     }
@@ -65,9 +64,9 @@ public class CotizacionMenu extends javax.swing.JPanel {
             botonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(botonesLayout.createSequentialGroup()
                 .addGap(209, 209, 209)
-                .addComponent(tablaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tablaButton, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                 .addGap(86, 86, 86)
-                .addComponent(formularioButton, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                .addComponent(formularioButton, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
                 .addGap(249, 249, 249))
         );
         botonesLayout.setVerticalGroup(
@@ -93,10 +92,10 @@ public class CotizacionMenu extends javax.swing.JPanel {
     private void formularioButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formularioButtonMouseClicked
         ventanas.setSelectedIndex(1);
     }//GEN-LAST:event_formularioButtonMouseClicked
-    
+
     private void manualInitComponents(){
-        ventanas.add(ct);
-        ventanas.add(cfm);
+        ventanas.add(at);
+        ventanas.add(afm);
         
         ventanas.setUI(new BasicTabbedPaneUI() {
             @Override
@@ -113,7 +112,6 @@ public class CotizacionMenu extends javax.swing.JPanel {
         });
     }
     
-    //<editor-fold defaultstate="collapsed" desc="Variables">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel botones;
     private javax.swing.JButton formularioButton;
@@ -121,8 +119,6 @@ public class CotizacionMenu extends javax.swing.JPanel {
     private javax.swing.JButton tablaButton;
     private javax.swing.JTabbedPane ventanas;
     // End of variables declaration//GEN-END:variables
-
-    CotizacionFormularioMenu cfm = new CotizacionFormularioMenu();
-    CotizacionTabla ct = new CotizacionTabla();
-    //</editor-fold>
+    AreasFormularioMenu afm = new AreasFormularioMenu();
+    AreasTabla at = new AreasTabla();
 }
