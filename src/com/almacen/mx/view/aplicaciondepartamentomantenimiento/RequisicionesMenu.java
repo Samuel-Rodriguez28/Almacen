@@ -4,7 +4,6 @@
  */
 package com.almacen.mx.view.aplicaciondepartamentomantenimiento;
 
-import static com.almacen.mx.view.aplicaciondepartamentomantenimiento.StockMenu.ventanas;
 import java.awt.Insets;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
 
@@ -12,12 +11,12 @@ import javax.swing.plaf.basic.BasicTabbedPaneUI;
  *
  * @author acost
  */
-public class CotizacionMenu extends javax.swing.JPanel {
+public class RequisicionesMenu extends javax.swing.JPanel {
 
     /**
-     * Creates new form CotizacionMenu
+     * Creates new form RequisicionesMenu
      */
-    public CotizacionMenu() {
+    public RequisicionesMenu() {
         initComponents();
         manualInitComponents();
     }
@@ -37,6 +36,7 @@ public class CotizacionMenu extends javax.swing.JPanel {
         formularioButton = new javax.swing.JButton();
         ventanas = new javax.swing.JTabbedPane();
 
+        setBackground(new java.awt.Color(44, 60, 67));
         setLayout(new java.awt.BorderLayout());
 
         panelMenu.setBackground(new java.awt.Color(44, 60, 67));
@@ -67,7 +67,7 @@ public class CotizacionMenu extends javax.swing.JPanel {
                 .addGap(209, 209, 209)
                 .addComponent(tablaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(86, 86, 86)
-                .addComponent(formularioButton, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                .addComponent(formularioButton, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
                 .addGap(249, 249, 249))
         );
         botonesLayout.setVerticalGroup(
@@ -93,10 +93,10 @@ public class CotizacionMenu extends javax.swing.JPanel {
     private void formularioButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formularioButtonMouseClicked
         ventanas.setSelectedIndex(1);
     }//GEN-LAST:event_formularioButtonMouseClicked
-    
+
     private void manualInitComponents(){
-        ventanas.add(ct);
-        ventanas.add(cfm);
+        ventanas.add(rt);
+        ventanas.add(rfm);       
         
         ventanas.setUI(new BasicTabbedPaneUI() {
             @Override
@@ -113,7 +113,6 @@ public class CotizacionMenu extends javax.swing.JPanel {
         });
     }
     
-    //<editor-fold defaultstate="collapsed" desc="Variables">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel botones;
     private javax.swing.JButton formularioButton;
@@ -121,8 +120,6 @@ public class CotizacionMenu extends javax.swing.JPanel {
     private javax.swing.JButton tablaButton;
     private javax.swing.JTabbedPane ventanas;
     // End of variables declaration//GEN-END:variables
-
-    CotizacionFormularioMenu cfm = new CotizacionFormularioMenu();
-    CotizacionTabla ct = new CotizacionTabla();
-    //</editor-fold>
+    RequisicionesFormularioMenu rfm = new RequisicionesFormularioMenu();
+    RequisicionesTabla rt = new RequisicionesTabla();
 }
