@@ -707,7 +707,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     EntradasMenu em = new EntradasMenu();
     SalidasMenu sm = new SalidasMenu();
     StockMenu stm = new StockMenu();
-    CotizacionFormularioMenu cm = new CotizacionFormularioMenu();
+    CotizacionMenu cm = new CotizacionMenu();
     RequisicionesMenu rm = new RequisicionesMenu();
     AreasMenu am = new AreasMenu();
     DestinoMenu dm = new DestinoMenu();
